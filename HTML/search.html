@@ -53,13 +53,38 @@
 		<!-- === END HEADER === -->
 		<!-- === BEGIN CONTENT === -->
 		<div id="content" class="container">
-			<div class="row margin-vert-30">
+			<div class="row margin-vert-30 search-margin">
 				<div class="col-md-12">
-					<div class="error-404-page text-center">
-						<h2>404!</h2>
-						<h3>The page can not be found</h3>
-						<p>The page you are looking for might have been removed, <br> had its name changed or is temporarily unavailable.</p>
-					</div>
+					<div class="search-box">
+                        <h2 class="search-form-title">Search</h2>
+                        <form class="form-search">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" class="form-control" placeholder="Enter name">
+                            </div>
+                            <div class="form-group">
+                                <label>Tags:</label>
+                                <div id="tag-buttons" class="tag-buttons">
+                                    <button type="button" class="tag-btn" data-tag="tag1">HTML</button>
+                                    <button type="button" class="tag-btn" data-tag="tag2">CSS</button>
+                                    <button type="button" class="tag-btn" data-tag="tag3">JavaScript</button>
+                                    <button type="button" class="tag-btn" data-tag="tag4">jQuery</button>
+                                    <button type="button" class="tag-btn" data-tag="tag5">PHP</button>
+                                    <button type="button" class="tag-btn" data-tag="tag6">Ruby</button>
+                                    <button type="button" class="tag-btn" data-tag="tag7">Bootstrap</button>
+                                    <button type="button" class="tag-btn" data-tag="tag8">Grunt</button>
+                                    <button type="button" class="tag-btn" data-tag="tag9">CoffeeScript</button>
+                                    <button type="button" class="tag-btn" data-tag="tag10">HTML5</button>
+                                </div>
+                                <div id="selected-tags" class="selected-tags"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="date">Date</label>
+                                <input type="date" id="date" class="form-control">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </form>
+                    </div>
 				</div>
 			</div>
 		</div>
@@ -221,6 +246,22 @@
 <script type="text/javascript" src="assets/js/slimbox2.js" charset="utf-8"></script>
 <!-- Modernizr -->
 <script src="assets/js/modernizr.custom.js" type="text/javascript"></script>
+<!-- Tags -->
+<script>
+    document.querySelectorAll('.tag-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            this.classList.toggle('selected');
+            updateSelectedTags();
+        });
+    });
+
+    function updateSelectedTags() {
+        let selectedTags = Array.from(document.querySelectorAll('.tag-btn.selected'))
+            .map(btn => btn.textContent);
+        document.getElementById('selected-tags').innerHTML = selectedTags
+            .map(tag => `<span class="badge badge-primary">${tag}</span>`).join(' ');
+    }
+</script>
 <!-- End JS -->
 </body>
 </html>

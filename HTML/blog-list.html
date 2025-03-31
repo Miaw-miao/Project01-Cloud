@@ -41,67 +41,8 @@
 				<div id="hornav" class="pull-right visible-lg">
 					<ul class="nav navbar-nav">
 						<li><a href="index.html">Home</a></li>
-						<li><span>Features</span>
-							<ul>
-								<li class="parent"><span>Typography</span>
-									<ul>
-										<li><a href="features-typo-basic.html">Basic Typography</a></li>
-										<li><a href="features-typo-blockquotes.html">Blockquotes</a></li>
-									</ul>
-								</li>
-								<li class="parent"><span>Components</span>
-									<ul>
-										<li><a href="features-labels.html">Labels</a></li>
-										<li><a href="features-progress-bars.html">Progress Bars</a></li>
-										<li><a href="features-panels.html">Panels</a></li>
-										<li><a href="features-pagination.html">Pagination</a></li>
-									</ul>
-								</li>
-								<li class="parent"><span>Icons</span>
-									<ul>
-										<li><a href="features-icons.html">Icons General</a></li>
-										<li><a href="features-icons-social.html">Social Icons</a></li>
-										<li><a href="features-icons-font-awesome.html">Font Awesome</a></li>
-										<li><a href="features-icons-glyphicons.html">Glyphicons</a></li>
-									</ul>
-								</li>
-								
-								<li><a href="features-testimonials.html">Testimonials</a></li>
-								<li><a href="features-accordions-tabs.html">Accordions & Tabs</a></li>
-								<li><a href="features-buttons.html">Buttons</a></li>
-								<li><a href="features-carousels.html">Carousels</a></li>
-								<li><a href="features-grid.html">Grid System</a></li>
-								<li><a href="features-animate-on-scroll.html">Animate On Scroll</a></li>
-							</ul>
-						</li>
-						<li><span>Pages</span>
-							<ul>
-								<li><a href="pages-about-us.html">About Us</a></li>
-								<li><a href="pages-services.html">Services</a></li>
-								<li><a href="pages-faq.html">F.A.Q.</a></li>
-								<li><a href="pages-about-me.html">About Me</a></li>
-								<li><a href="pages-full-width.html">Full Width</a></li>
-								<li><a href="pages-left-sidebar.html">Left Sidebar</a></li>
-								<li><a href="pages-right-sidebar.html">Right Sidebar</a></li>
-								<li><a href="pages-login.html">Login</a></li>
-								<li><a href="pages-sign-up.html">Sign-Up</a></li>
-								<li><a href="pages-404.html">404 Error Page</a></li>
-							</ul>
-						</li>
-						<li><span>Portfolio</span>
-							<ul>
-								<li><a href="portfolio-2-column.html">2 Column</a></li>
-								<li><a href="portfolio-3-column.html">3 Column</a></li>
-								<li><a href="portfolio-4-column.html">4 Column</a></li>
-								<li><a href="portfolio-6-column.html">6 Column</a></li>
-							</ul>
-						</li>
-						<li><span>Blog</span>
-							<ul>
-								<li><a href="blog-list.html">Blog</a></li>
-								<li><a href="blog-single.html">Blog Single Item</a></li>
-							</ul>
-						</li>
+						<li><a href="search.html">Search</a></li>
+						<li><a href="blog-list.html">Blog</a></li>
 						<li><a href="contact.html">Contact</a></li>
 					</ul>				</div>
 				</div>
@@ -113,6 +54,41 @@
 		<!-- === BEGIN CONTENT === -->
 		<div id="content" class="container">
 			<div class="row margin-vert-30">
+				<div class="col-md-12">
+					<!-- Filter Buttons -->
+					<div class="portfolio-filter-container margin-top-20">
+						<ul class="portfolio-filter">
+							<li class="portfolio-filter-label label label-primary">
+								filter by:
+							</li>
+							<li class="dropdown">
+								<button class="btn btn-default dropdown-toggle" type="button" id="post-date-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100px;">
+									Post Date <span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu" aria-labelledby="post-date-dropdown">
+									<li><a href="#" type="button" class="btn btn-default" data-sort="latest">Latest</a></li>
+									<li><a href="#" type="button" class="btn btn-default" data-sort="oldest">Oldest</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="#" class="portfolio-selected btn btn-default" data-filter="*">All</a>
+							</li>
+							<li>
+								<a href="#" class="btn btn-default" data-filter=".code">Coding</a>
+							</li>
+							<li>
+								<a href="#"  class="btn btn-default"data-filter=".design">Design</a>
+							</li>
+							<li>
+								<a href="#"  class="btn btn-default"data-filter=".audio">Audio</a>
+							</li>
+							<li>
+								<a href="#"  class="btn btn-default"data-filter=".video">Video</a>
+							</li>
+						</ul>
+					</div>
+					<!-- End Filter Buttons -->
+				</div>
 				<!-- Main Column -->
 				<div class="col-md-9">
 					<!-- Blog Post -->
@@ -126,9 +102,8 @@
 							</div>
 							<!-- End Date -->
 							<!-- Title -->
-							<h2>
-							<a href="#">
-							A Sample Blog Title		</a>
+							<h2>							
+								<li><a href="blog-single.html">Blog Single Item</a></li>
 							</h2>
 							<div class="clearfix"></div>
 							<!-- End Title -->
@@ -171,7 +146,7 @@
 								<div class="col-md-7">
 									<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</p>
 									<!-- Read More -->
-									<a href="#" class="btn btn-primary">
+									<a href="blog-single.html" class="btn btn-primary">
 										Read More <i class="icon-chevron-right readmore-icon"></i>
 									</a>
 									<!-- End Read More -->
