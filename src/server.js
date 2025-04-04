@@ -2,9 +2,12 @@ import express from "express";
 import bodyParser from "body-parser";
 import viewEngine from "./config/viewEngine";
 import initWebRoutes from "./route/web";
+import path from 'path';
 require('dotenv').config();
 
 let app = express();
+
+app.use(express.static('public'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
