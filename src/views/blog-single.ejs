@@ -113,13 +113,23 @@
 										<h3>About the Author</h3>
 									</div>
 									<div class="panel-body">
-										<div class="row">
+										<div class="row author-info">
 											<div class="col-md-2">
-												<img class="pull-left" src="/img/profiles/87.jpg" alt="image1">
+												<img class="pull-left author-pic" src="/img/profiles/admin2.jpg" alt="image1">
 											</div>
 											<div class="col-md-10">
-												<label>John Doe</label>
-												<p>Lorem ipsum dolor sit amet, in pri offendit ocurreret. Vix sumo ferri an. pfs adodio fugit delenit ut qui. Omittam suscipiantur ex vel,ex audiam intellegat gfIn labitur discere eos, nam an feugiat voluptua.</p>
+												<label>Do Hanh Thao</label>
+												<p>Student ID: 22120338.</p>
+											</div>
+										</div>
+										<hr>
+										<div class="row author-info">
+											<div class="col-md-2">
+												<img class="pull-left author-pic" src="/img/profiles/admin1.jpg" alt="image1">
+											</div>
+											<div class="col-md-10">
+												<label>Nguyen Minh Thien</label>
+												<p>Student ID: 22120341.</p>
 											</div>
 										</div>
 									</div>
@@ -188,29 +198,15 @@
 												</div>
 												<div class="row margin-top-20">
 													<div class="col-md-12">
-														<form>
-															<label>Name</label>
-															<div class="row margin-bottom-20">
-																<div class="col-md-7 col-md-offset-0">
-																	<input class="form-control" type="text">
-																</div>
-															</div>
-															
-															<label>Email <span>*</span></label>
-															<div class="row margin-bottom-20">
-																<div class="col-md-7 col-md-offset-0">
-																	<input class="form-control" type="text">
-																</div>
-															</div>
-															
-															<label>Message</label>
+														<form>															
+															<label>Write Comment</label>
 															<div class="row margin-bottom-20">
 																<div class="col-md-11 col-md-offset-0">
 																	<textarea class="form-control" rows="8"></textarea>
 																</div>
 															</div>
 															
-															<p><button class="btn btn-primary" type="submit">Send Message</button></p>
+															<p><button class="btn btn-primary" type="submit">Send Comment</button></p>
 														</form>
 													</div>
 												</div>
@@ -223,6 +219,15 @@
 								<!-- End Comments -->
 							</div>
 							
+
+							<!-- Main Button -->
+							<button class="floating-btn" id="toggleBtn" onclick="toggleMenu()">+</button>
+
+							<!-- List Button -->
+							<div class="floating-menu" id="menu">
+								<button class="btn1" title="Edit Blog">Edit</button>
+								<button class="btn1" title="Delete Blog">Delete</button>
+							</div>
 						</div>
 					</div>
 					<!-- End Blog Post -->		</div>
@@ -449,6 +454,23 @@
 			<script type="text/javascript" src="/js/slimbox2.js" charset="utf-8"></script>
 			<!-- Modernizr -->
 			<script src="/js/modernizr.custom.js" type="text/javascript"></script>
+			<!-- Add Blog Button -->
+			<script>
+				function toggleMenu() {
+					let menu = document.getElementById("menu");
+					let button = document.getElementById("toggleBtn");
+		
+					menu.classList.toggle("open");
+					button.classList.toggle("open");
+		
+					// exchange + to x
+					if (button.classList.contains("open")) {
+						button.textContent = "×";
+					} else {
+						button.textContent = "+";
+					}
+				}
+			</script>
 			<!-- End JS -->
 		</body>
 	</html>

@@ -53,38 +53,36 @@
 		<!-- === END HEADER === -->
 		<!-- === BEGIN CONTENT === -->
 		<div id="content" class="container">
-			<div class="row margin-vert-30 search-margin">
-				<div class="col-md-12">
-					<div class="search-box">
-                        <h2 class="search-form-title">Search</h2>
-                        <form class="form-search">
-                            <div class="form-group">
-                                <label for="name">Title/Description</label>
-                                <input type="text" id="name" class="form-control" placeholder="Enter name">
-                            </div>
-                            <!-- <div class="form-group">
-                                <label>Tags:</label>
-                                <div id="tag-buttons" class="tag-buttons">
-                                    <button type="button" class="tag-btn" data-tag="tag1">HTML</button>
-                                    <button type="button" class="tag-btn" data-tag="tag2">CSS</button>
-                                    <button type="button" class="tag-btn" data-tag="tag3">JavaScript</button>
-                                    <button type="button" class="tag-btn" data-tag="tag4">jQuery</button>
-                                    <button type="button" class="tag-btn" data-tag="tag5">PHP</button>
-                                    <button type="button" class="tag-btn" data-tag="tag6">Ruby</button>
-                                    <button type="button" class="tag-btn" data-tag="tag7">Bootstrap</button>
-                                    <button type="button" class="tag-btn" data-tag="tag8">Grunt</button>
-                                    <button type="button" class="tag-btn" data-tag="tag9">CoffeeScript</button>
-                                    <button type="button" class="tag-btn" data-tag="tag10">HTML5</button>
-                                </div>
-                                <div id="selected-tags" class="selected-tags"></div>
-                            </div> -->
-                            <div class="form-group">
-                                <label for="date">Date</label>
-                                <input type="date" id="date" class="form-control">
-                            </div>
-                            <a href="pages-404.ejs" class="btn btn-primary">Search</a>
-                        </form>
-                    </div>
+			<div class="container">
+				<div class="row margin-vert-30">
+					<!-- Login Box -->
+					<div class="col-md-6 col-md-offset-3 col-sm-offset-3">
+						<form class="login-page">
+							<div class="login-header margin-bottom-30">
+								<h2>Login to your account</h2>
+							</div>
+							<div class="input-group margin-bottom-20">
+								<span class="input-group-addon"><i class="fa fa-user"></i></span>
+								<input placeholder="Username" class="form-control" type="text">
+							</div>
+							<div class="input-group margin-bottom-20">
+								<span class="input-group-addon"><i class="fa fa-lock"></i></span>
+								<input placeholder="Password" class="form-control" type="password">
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<label class="checkbox"><input type="checkbox"> Stay signed in</label>
+								</div>
+								<div class="col-md-6">
+									<button class="btn btn-primary pull-right" type="submit">Login</button>
+								</div>
+							</div>
+							<hr>
+							<h4>Forget your Password ?</h4>
+							<p><a href="#">Click here</a> to reset your password.</p>
+						</form>
+					</div>
+					<!-- End Login Box -->
 				</div>
 			</div>
 		</div>
@@ -246,22 +244,6 @@
 <script type="text/javascript" src="/js/slimbox2.js" charset="utf-8"></script>
 <!-- Modernizr -->
 <script src="/js/modernizr.custom.js" type="text/javascript"></script>
-<!-- Tags -->
-<!-- <script>
-    document.querySelectorAll('.tag-btn').forEach(button => {
-        button.addEventListener('click', function() {
-            this.classList.toggle('selected');
-            updateSelectedTags();
-        });
-    });
-
-    function updateSelectedTags() {
-        let selectedTags = Array.from(document.querySelectorAll('.tag-btn.selected'))
-            .map(btn => btn.textContent);
-        document.getElementById('selected-tags').innerHTML = selectedTags
-            .map(tag => `<span class="badge badge-primary">${tag}</span>`).join(' ');
-    }
-</script> -->
 <!-- End JS -->
 </body>
 </html>
