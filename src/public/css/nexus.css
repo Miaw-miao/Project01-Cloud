@@ -2669,30 +2669,7 @@ ul.posts-list li {
 .search-box .btn-primary{
   margin-top: 10px; 
 }
-/* Search Form Tags */
-.tag-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-}
-.tag-btn {
-  border: 1px solid #000;
-  padding: 8px 12px;
-  color: black;
-  border-radius: 5px;
-  cursor: pointer;
-}
-.tag-btn.selected {
-  filter: brightness(0.7);
-}
-.selected-tags {
-  margin-top: 10px;
-}
-.selected-tags .badge {
-  margin-right: 5px;
-  padding: 5px 10px;
-  background-color: #666;
-  color: white;
-  border: 1px solid #000;
-  border-radius: 5px;
+
+.right-box{
+  float: right;
 }
