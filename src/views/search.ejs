@@ -40,10 +40,10 @@
 			<div class="col-md-12 margin-top-30">
 				<div id="hornav" class="pull-right visible-lg">
 					<ul class="nav navbar-nav">
-						<li><a href="index.ejs">Home</a></li>
-						<li><a href="search.ejs">Search</a></li>
-						<li><a href="blog-list.ejs">Blog</a></li>
-						<li><a href="contact.ejs">Contact</a></li>
+						<li><a href="/index">Home</a></li>
+						<li><a href="/search">Search</a></li>
+						<li><a href="/blog-list">Blog</a></li>
+						<li><a href="/contact">Contact</a></li>
 					</ul>				</div>
 				</div>
 				<div class="clear"></div>
@@ -57,10 +57,10 @@
 				<div class="col-md-12">
 					<div class="search-box">
                         <h2 class="search-form-title">Search</h2>
-                        <form class="form-search">
+                        <form action="/search/results" method="GET" class="form-search">
                             <div class="form-group">
-                                <label for="name">Title/Description</label>
-                                <input type="text" id="name" class="form-control" placeholder="Enter name">
+                                <label for="searchTerm">Title/Description</label>
+                                <input type="text" id="searchTerm" name="searchTerm" class="form-control" placeholder="Enter title or description">
                             </div>
                             <!-- <div class="form-group">
                                 <label>Tags:</label>
@@ -80,9 +80,9 @@
                             </div> -->
                             <div class="form-group">
                                 <label for="date">Date</label>
-                                <input type="date" id="date" class="form-control">
+                                <input type="date" id="date" name="date" class="form-control">
                             </div>
-                            <a href="pages-404.ejs" class="btn btn-primary">Search</a>
+                            <button type="submit" class="btn btn-primary">Search</button>
                         </form>
                     </div>
 				</div>
@@ -99,61 +99,61 @@
 						<div class="thumbs-gallery">
 							
 							<a class="thumbBox" rel="lightbox-thumbs" href="assets/img/thumbsgallery/image1.jpg">
-								<img src="assets/img/thumbsgallery/thumbs/image1.jpg" alt="image1.jpg">
+								<img src="/img/thumbsgallery/thumbs/image1.jpg" alt="image1.jpg">
 							<i></i></a>
 							
 							
 							<a class="thumbBox" rel="lightbox-thumbs" href="assets/img/thumbsgallery/image2.jpg">
-								<img src="assets/img/thumbsgallery/thumbs/image2.jpg" alt="image2.jpg">
+								<img src="/img/thumbsgallery/thumbs/image2.jpg" alt="image2.jpg">
 							<i></i></a>
 							
 							
 							<a class="thumbBox" rel="lightbox-thumbs" href="assets/img/thumbsgallery/image3.jpg">
-								<img src="assets/img/thumbsgallery/thumbs/image3.jpg" alt="image3.jpg">
+								<img src="/img/thumbsgallery/thumbs/image3.jpg" alt="image3.jpg">
 							<i></i></a>
 							
 							
 							<a class="thumbBox" rel="lightbox-thumbs" href="assets/img/thumbsgallery/image4.jpg">
-								<img src="assets/img/thumbsgallery/thumbs/image4.jpg" alt="image4.jpg">
+								<img src="/img/thumbsgallery/thumbs/image4.jpg" alt="image4.jpg">
 							<i></i></a>
 							
 							
 							<a class="thumbBox" rel="lightbox-thumbs" href="assets/img/thumbsgallery/image6.jpg">
-								<img src="assets/img/thumbsgallery/thumbs/image6.jpg" alt="image6.jpg">
+								<img src="/img/thumbsgallery/thumbs/image6.jpg" alt="image6.jpg">
 							<i></i></a>
 							
 							
 							<a class="thumbBox" rel="lightbox-thumbs" href="assets/img/thumbsgallery/image7.jpg">
-								<img src="assets/img/thumbsgallery/thumbs/image7.jpg" alt="image7.jpg">
+								<img src="/img/thumbsgallery/thumbs/image7.jpg" alt="image7.jpg">
 							<i></i></a>
 							
 							
 							<a class="thumbBox" rel="lightbox-thumbs" href="assets/img/thumbsgallery/image8.jpg">
-								<img src="assets/img/thumbsgallery/thumbs/image8.jpg" alt="image8.jpg">
+								<img src="/img/thumbsgallery/thumbs/image8.jpg" alt="image8.jpg">
 							<i></i></a>
 							
 							
 							<a class="thumbBox" rel="lightbox-thumbs" href="assets/img/thumbsgallery/image9.jpg">
-								<img src="assets/img/thumbsgallery/thumbs/image9.jpg" alt="image9.jpg">
+								<img src="/img/thumbsgallery/thumbs/image9.jpg" alt="image9.jpg">
 							<i></i></a>
 							
 							
 							<a class="thumbBox" rel="lightbox-thumbs" href="assets/img/thumbsgallery/image92.jpg">
-								<img src="assets/img/thumbsgallery/thumbs/image92.jpg" alt="image92.jpg">
+								<img src="/img/thumbsgallery/thumbs/image92.jpg" alt="image92.jpg">
 							<i></i></a>
 							
 							
 							<a class="thumbBox" rel="lightbox-thumbs" href="assets/img/thumbsgallery/image94.jpg">
-								<img src="assets/img/thumbsgallery/thumbs/image94.jpg" alt="image94.jpg">
+								<img src="/img/thumbsgallery/thumbs/image94.jpg" alt="image94.jpg">
 							<i></i></a>
 							
 							
 							<a class="thumbBox" rel="lightbox-thumbs" href="assets/img/thumbsgallery/image95.jpg">
-								<img src="assets/img/thumbsgallery/thumbs/image95.jpg" alt="image95.jpg">
+								<img src="/img/thumbsgallery/thumbs/image95.jpg" alt="image95.jpg">
 							<i></i></a>
 							
 							<a class="thumbBox" rel="lightbox-thumbs" href="assets/img/thumbsgallery/image96.jpg">
-								<img src="assets/img/thumbsgallery/thumbs/image96.jpg" alt="image96.jpg">
+								<img src="/img/thumbsgallery/thumbs/image96.jpg" alt="image96.jpg">
 							<i></i></a>
 							
 							</div>			<div class="clearfix"></div>
