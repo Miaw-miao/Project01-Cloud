@@ -1,5 +1,6 @@
+import db from '../models/index'
 
-let getHomePage = (req, res) => {
+let getHomePage = async (req, res) => {
     return res.render('homepage.ejs');
 }
 
