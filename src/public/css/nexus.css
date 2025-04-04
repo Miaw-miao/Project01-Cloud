@@ -87,6 +87,17 @@ body {
   width: 100%;
   position: absolute;
 }
+.logo-img{
+  width: 250px;
+  height: 70px;
+}
+.logo-title{
+  font-weight: 700;
+  font-size: 17px;
+  font-family: 'Montserrat', sans-serif;
+  width: 250px;
+  text-align: center;
+}
 .logo a {
   left: 0px;
   top: 0px;
