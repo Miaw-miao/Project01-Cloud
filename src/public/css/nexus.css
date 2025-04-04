@@ -2650,11 +2650,11 @@ ul.posts-list li {
 
 /* Search Box */
 .search-box{
-  background-color: #EEE;
+  /* background-color: #EEE; */
   margin-top: 40px;
   padding: 25px;
-  border: 2px solid #000;
-  border-radius: 5px;
+  /* border: 2px solid #000;
+  border-radius: 5px; */
 }
 /* Search Form */
 .search-form-title{
@@ -2670,6 +2670,12 @@ ul.posts-list li {
   margin-top: 10px; 
 }
 
+/* Blog Single Recent Post */
 .right-box{
-  float: right;
+  margin-top: 20px;
+}
+
+/* Content of Contact Page */
+.contact-container{
+  margin-top: 20px;
 }
