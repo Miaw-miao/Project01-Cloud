@@ -5,5 +5,5 @@ let getLoginPage = async (req, res) => {
 }
 
 module.exports = {
-    getIndexPage: getLoginPage,
+    getLoginPage: getLoginPage,
 }

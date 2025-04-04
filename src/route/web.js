@@ -11,17 +11,19 @@ let router = express.Router();
 let initWebRoutes = (app) => {
     router.get('/', indexController.getIndexPage);
 
-    router.get('/blog-list.ejs', bloglistController.getBlogListPage);
+    router.get('/blog-list', bloglistController.getBlogListPage);
 
-    router.get('/contact.ejs', contactController.getContactPage);
+    router.get('/contact', contactController.getContactPage);
 
-    router.get('/blog-single.ejs', blogsingleController.getBlogSinglePage);
+    router.get('/blog-single', blogsingleController.getBlogSinglePage);
 
-    router.get('/search.ejs', searchController.getSearchPage);
+    router.get('/search', searchController.getSearchPage);
 
-    router.get('/pages-404.ejs', pages404Controller.get404Page);
+    router.get('/search/results', searchController.searchBlog);
 
-    router.get('/index.ejs', indexController.getIndexPage);
+    router.get('/pages-404', pages404Controller.get404Page);
+
+    router.get('/index', indexController.getIndexPage);
     return app.use("/", router);
 }
 
