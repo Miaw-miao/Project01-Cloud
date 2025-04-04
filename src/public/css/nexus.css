@@ -814,7 +814,6 @@ h1.logo-text a {
 .slicknav_btn {
   position: relative;
   display: block;
-  vertical-align: middle;
   float: right;
   padding: 0.5em 0.7em;
   line-height: 1.125em;
@@ -877,8 +876,10 @@ h1.logo-text a {
   clear: both;
 }
 /* IE6/7 support */
-.slicknav_menu {
-  *zoom: 1;
+.slicknav_menu::after {
+  content: "";
+  display: table;
+  clear: both;
 }
 /* 
     User Default Style
@@ -2481,6 +2482,7 @@ ul.social-icons li a:hover {
   position: relative;
   margin: 0 7px 7px 0;
   text-decoration: none;
+  transition: color 0.2s;
   -webkit-transition: color 0.2s;
   box-shadow: 1px -1px 0px rgba(0, 0, 0, 0.15) inset;
 }
