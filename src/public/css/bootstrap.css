@@ -5419,6 +5419,13 @@ button.close {
 .carousel-inner > .item > a > img {
   line-height: 1;
 }
+.carousel-inner .item img {
+  width: 1050px;
+  height: 600px;
+  object-fit: cover; /* hoặc contain, tùy bạn muốn ảnh đầy hay vừa khít */
+  display: block;
+  margin: 0 auto; /* căn giữa ảnh nếu cần */
+}
 .carousel-inner > .active,
 .carousel-inner > .next,
 .carousel-inner > .prev {

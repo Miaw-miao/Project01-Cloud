@@ -355,6 +355,7 @@ h1.logo-text a {
   margin-bottom: 20px;
 }
 .margin-vert-30 {
+  margin-top: 20px;
   margin-bottom: 30px;
 }
 .margin-vert-40 {
@@ -2563,6 +2564,7 @@ ul.posts-list li {
 }
 /* Login */
 .login-page {
+  margin-top: 30px;
   background: none repeat scroll 0 0 #FEFEFE;
   border: 1px solid #d1d1d1;
   border-radius: 5px;
@@ -2575,6 +2577,7 @@ ul.posts-list li {
 }
 /* Sign Up */
 .signup-page {
+  margin-top: 30px;
   background: none repeat scroll 0 0 #FEFEFE;
   border: 1px solid #d1d1d1;
   border-radius: 5px;
@@ -2584,6 +2587,13 @@ ul.posts-list li {
 }
 .signup-page label {
   font-weight: normal;
+}
+
+.signup-title{
+  font-weight: 700;
+}
+.redirect{
+  color: red;
 }
 /* 404 */
 .error-404-page h2 {
