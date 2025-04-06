@@ -5,49 +5,57 @@ let getSearchPage = async (req, res) => {
     return res.render('search.ejs');
 }
 
-// Hàm tìm kiếm blog
-let searchBlog = async (req, res) => {
-    // Lấy chuỗi tìm kiếm và ngày từ query string
-    let searchTerm = req.query.searchTerm;  
-    let date = req.query.date;  
 
-    // Kiểm tra nếu không có chuỗi tìm kiếm thì trả về kết quả rỗng
+let searchBlog = async (req, res) => {
+    let searchTerm = req.query.searchTerm;
+    let date = req.query.date;
+
     if (!searchTerm && !date) {
         return res.render('search.ejs', { blogs: [], message: 'Please enter a search term or a date' });
     }
 
     try {
-        // Tạo điều kiện tìm kiếm
-        let searchConditions = {
-            [Op.or]: [
-                { title: { [Op.like]: `%${searchTerm}%` } },  // Tìm trong trường title
-                { description: { [Op.like]: `%${searchTerm}%` } }  // Tìm trong trường description
-            ]
-        };
+        let searchConditions = {};
 
-        // Nếu có ngày tìm kiếm, thêm điều kiện tìm theo ngày
-        if (date) {
-            searchConditions.created_date = { [Op.eq]: new Date(date) };  // Tìm theo ngày
+        if (searchTerm) {
+            searchConditions[Op.or] = [
+                { title: { [Op.like]: `%${searchTerm}%` } },
+                { description: { [Op.like]: `%${searchTerm}%` } }
+            ];
         }
 
-        // Sử dụng Sequelize để tìm các blog có chứa chuỗi tìm kiếm và có thể tìm theo ngày
+        // Nếu có date
+        if (date) {
+            // Nếu đã có điều kiện, thêm AND
+            if (Object.keys(searchConditions).length > 0) {
+                searchConditions = {
+                    [Op.and]: [
+                        searchConditions,
+                        { created_date: { [Op.eq]: new Date(date) } }
+                    ]
+                };
+            } else {
+                // Chỉ lọc theo ngày
+                searchConditions.created_date = { [Op.eq]: new Date(date) };
+            }
+        }
+
         let blogs = await db.Blog.findAll({
             where: searchConditions
         });
 
-        // Nếu không tìm thấy blog nào, chuyển đến trang lỗi 404
         if (blogs.length === 0) {
             return res.render('pages-404.ejs');
         }
 
-        // Trả kết quả về cho người dùng
-        return res.render('search.ejs', { blogs: blogs });
+        return res.render('blog-list.ejs', { blogs: blogs });
 
     } catch (error) {
         console.error(error);
         return res.status(500).send("Có lỗi xảy ra trong quá trình tìm kiếm");
     }
-}
+};
+
 
 
 
