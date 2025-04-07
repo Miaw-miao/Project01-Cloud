@@ -91,17 +91,19 @@
 							<div class="clearfix"></div>
 							<div class="blog-post-body row margin-top-15">
 						  		<div class="col-md-5">
-									<img class="pull-left" src="<%= blog.image || '/img/blog/default.jpg' %>" alt="image">
+									<img class="pull-left" src="<%= blog.image || '/img/blog/image1.jpg' %>" alt="image">
 						  		</div>
 						  		<div class="col-md-7">
 									<p><%= blog.summary || '' %></p>
 						  		</div>
-						  		<div class="col-md-12" style="margin-top: 15px;">
+							</div>
+							<div class="blog-post-body row margin-top-15">
+								<div class="col-md-12" style="margin-top: 15px;">
 									<p><%= blog.content || '' %></p>
 				  
 									<% if (blog.quote) { %>
 									<blockquote class="primary">
-							  			<p><em><%= blog.quote %></em></p>
+										  <p><em><%= blog.quote %></em></p>
 										<small>
 											Someone famous in
 											<cite title="Source Title">Source Title</cite>
@@ -110,37 +112,37 @@
 									<% } %>
 				  
 									<p><%= blog.additionalContent || '' %></p>
-						  		</div>
+								</div>
 							</div>
 				  
 							<!-- Tác giả -->
 							<div class="blog-item-footer">
-							<div class="blog-author panel panel-default margin-bottom-30">
-								<div class="panel-heading">
-								<h3>About the Author</h3>
-								</div>
-								<div class="panel-body">
-								<div class="row author-info">
-									<div class="col-md-2">
-									<img class="pull-left author-pic" src="/img/profiles/admin2.jpg" alt="admin2">
+								<div class="blog-author panel panel-default margin-bottom-30">
+									<div class="panel-heading">
+										<h3>About the Author</h3>
 									</div>
-									<div class="col-md-10">
-									<label>Do Hanh Thao</label>
-									<p>Student ID: 22120338.</p>
+									<div class="panel-body">
+										<div class="row author-info">
+											<div class="col-md-2">
+												<img class="pull-left author-pic" src="/img/profiles/admin2.jpg" alt="admin2" style="margin-bottom: 15px;">
+											</div>
+											<div class="col-md-10">
+												<label>Do Hanh Thao</label>
+												<p>Student ID: 22120338.</p>
+											</div>
+										</div>
+										<hr>
+										<div class="row author-info">
+											<div class="col-md-2">
+												<img class="pull-left author-pic" src="/img/profiles/admin1.jpg" alt="admin1" style="margin-bottom: 15px;">
+											</div>
+											<div class="col-md-10">
+												<label	label>Nguyen Minh Thien</label>
+												<p>Student ID: 22120341.</p>
+											</div>
+										</div>
 									</div>
 								</div>
-								<hr>
-								<div class="row author-info">
-									<div class="col-md-2">
-									<img class="pull-left author-pic" src="/img/profiles/admin1.jpg" alt="admin1">
-									</div>
-									<div class="col-md-10">
-									<label>Nguyen Minh Thien</label>
-									<p>Student ID: 22120341.</p>
-									</div>
-								</div>
-								</div>
-							</div>
 							</div>
 							<!-- Comments -->
 							<div class="blog-recent-comments panel panel-default margin-bottom-30">
