@@ -59,84 +59,85 @@
 				<!-- Main Column -->
 				<div class="col-md-9">
 					<div class="blog-post">
-						<div class="blog-item-header">
-							<div class="blog-post-date pull-left">
-								<span class="day">14</span>
-								<span class="month">Dec</span>
-							</div>
-							<h2>
-							<a href="#">
-								Just a Sample Blog Bost
-							</a>
-							</h2>
+					  <div class="blog-item-header">
+						<div class="blog-post-date pull-left">
+						  <span class="day"><%= new Date(blog.createdAt).getDate() %></span>
+						  <span class="month"><%= new Date(blog.createdAt).toLocaleString('default', { month: 'short' }) %></span>
 						</div>
-						<div class="blog-post-details">
-							<!-- Author Name -->
-							<div class="blog-post-details-item blog-post-details-item-left user-icon">
-								<i class="fa fa-user"></i>
-								<a href="#">Admin</a>
-							</div>
-							<!-- End Author Name -->
-							<!-- modified date -->
-							<div class="blog-post-details-item blog-post-details-item-left blog-post-details-tags tags-icon">
-								<a href="#">Last modified date: 30/12/2024</a>
-							</div>
-							<!-- End last modified date -->
+						<h2>
+						  <a href="#"><%= blog.title %></a>
+						</h2>
+					  </div>
+				  
+					  <div class="blog-post-details">
+						<!-- Author Name -->
+						<div class="blog-post-details-item blog-post-details-item-left user-icon">
+						  <i class="fa fa-user"></i>
+						  <a href="#"><%= blog.author || 'Admin' %></a>
 						</div>
-						<div class="blog-item">
-							<div class="clearfix"></div>
-							<div class="blog-post-body row margin-top-15">
-								<div class="col-md-5">
-									<img class="pull-left" src="/img/blog/image1.jpg" alt="image1">
-								</div>
-								<div class="col-md-7">
-									<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
-								</div>
-								<div class="col-md-12">
-									<p>
-									Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
-									<blockquote class="primary">
-										<p>
-										<em>"Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat."</em>
-										</p>
-										<small>
-										Someone famous in
-										<cite title="Source Title">Source Title</cite>
-										</small>
-									</blockquote>
-									<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
-									<p>Ut summo deserunt sit, quaeque hendrerit assentior cu mei. Sale electram nam ut. Putent perpetua reformidans ex vix, libris nostrud tractatos cu sit, est porro omnes nominati eu. Cu nullam similique complectitur eam. Viris phaedrum ullamcorper id eos.</p>
-								</div>
+						<!-- End Author Name -->
+						<!-- modified date -->
+						<div class="blog-post-details-item blog-post-details-item-left blog-post-details-tags tags-icon">
+						  <a href="#">Last modified date: <%= blog.updatedAt.toLocaleDateString('en-GB') %></a>
+						</div>
+						<!-- End last modified date -->
+					  </div>
+				  
+					  <div class="blog-item">
+						<div class="clearfix"></div>
+						<div class="blog-post-body row margin-top-15">
+						  <div class="col-md-5">
+							<img class="pull-left" src="<%= blog.image || '/img/blog/default.jpg' %>" alt="image">
+						  </div>
+						  <div class="col-md-7">
+							<p><%= blog.summary || '' %></p>
+						  </div>
+						  <div class="col-md-12">
+							<p><%= blog.content || '' %></p>
+				  
+							<% if (blog.quote) { %>
+							<blockquote class="primary">
+							  <p><em><%= blog.quote %></em></p>
+							  <small>
+								Someone famous in
+								<cite title="Source Title">Source Title</cite>
+							  </small>
+							</blockquote>
+							<% } %>
+				  
+							<p><%= blog.additionalContent || '' %></p>
+						  </div>
+						</div>
+				  
+						<!-- Tác giả -->
+						<div class="blog-item-footer">
+						  <div class="blog-author panel panel-default margin-bottom-30">
+							<div class="panel-heading">
+							  <h3>About the Author</h3>
 							</div>
-							<div class="blog-item-footer">
-								<!-- About the Author -->
-								<div class="blog-author panel panel-default margin-bottom-30">
-									<div class="panel-heading">
-										<h3>About the Author</h3>
-									</div>
-									<div class="panel-body">
-										<div class="row author-info">
-											<div class="col-md-2">
-												<img class="pull-left author-pic" src="/img/profiles/admin2.jpg" alt="image1">
-											</div>
-											<div class="col-md-10">
-												<label>Do Hanh Thao</label>
-												<p>Student ID: 22120338.</p>
-											</div>
-										</div>
-										<hr>
-										<div class="row author-info">
-											<div class="col-md-2">
-												<img class="pull-left author-pic" src="/img/profiles/admin1.jpg" alt="image1">
-											</div>
-											<div class="col-md-10">
-												<label>Nguyen Minh Thien</label>
-												<p>Student ID: 22120341.</p>
-											</div>
-										</div>
-									</div>
+							<div class="panel-body">
+							  <div class="row author-info">
+								<div class="col-md-2">
+								  <img class="pull-left author-pic" src="/img/profiles/admin2.jpg" alt="admin2">
 								</div>
-								<!-- End About the Author -->
+								<div class="col-md-10">
+								  <label>Do Hanh Thao</label>
+								  <p>Student ID: 22120338.</p>
+								</div>
+							  </div>
+							  <hr>
+							  <div class="row author-info">
+								<div class="col-md-2">
+								  <img class="pull-left author-pic" src="/img/profiles/admin1.jpg" alt="admin1">
+								</div>
+								<div class="col-md-10">
+								  <label>Nguyen Minh Thien</label>
+								  <p>Student ID: 22120341.</p>
+								</div>
+							  </div>
+							</div>
+						  </div>
+						</div>
 								<!-- Comments -->
 								<div class="blog-recent-comments panel panel-default margin-bottom-30">
 									<div class="panel-heading">
