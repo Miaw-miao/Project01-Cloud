@@ -88,8 +88,11 @@ body {
   position: absolute;
 }
 .logo-img{
-  width: 250px;
+  margin-left: 88px;
+  width: 70px;
   height: 70px;
+  border: 2px solid rgb(176, 167, 167);
+  border-radius: 50%;
 }
 .logo-title{
   font-weight: 700;
@@ -1338,6 +1341,8 @@ i.fa.center {
   margin-top: 10px;
   margin-bottom: 10px;
   max-width: 100%;
+  min-height: 326px;
+  width: 265px;
 }
 .image-hover {
   background-color: rgba(0, 0, 0, 0.043);
@@ -1408,6 +1413,16 @@ i.fa.center {
   padding: 3px 15px;
   border-width: 1px 0px 0 1px;
   border-radius: 5px 0 0 0;
+}
+.description {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;  /* Số dòng bạn muốn hiển thị */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  line-clamp: 3;
+  box-orient: vertical;
 }
 .portfolio-group {
   width: 100% !important;
@@ -2565,6 +2580,7 @@ ul.posts-list li {
 /* Login */
 .login-page {
   margin-top: 30px;
+  margin-bottom: 15px;
   background: none repeat scroll 0 0 #FEFEFE;
   border: 1px solid #d1d1d1;
   border-radius: 5px;
@@ -2578,6 +2594,7 @@ ul.posts-list li {
 /* Sign Up */
 .signup-page {
   margin-top: 30px;
+  margin-bottom: 15px;
   background: none repeat scroll 0 0 #FEFEFE;
   border: 1px solid #d1d1d1;
   border-radius: 5px;
@@ -2588,7 +2605,6 @@ ul.posts-list li {
 .signup-page label {
   font-weight: normal;
 }
-
 .signup-title{
   font-weight: 700;
 }

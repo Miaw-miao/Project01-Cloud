@@ -38,10 +38,23 @@ let deleteBlogById = async (blogId) => {
     }
 };
 
-let getAllBlogs = async (isNewest) => {
+// let getAllBlogs = async (isNewest) => {
+//     try {
+//         let blogs = await db.Blog.findAll({
+//             order: isNewest ? [['id', 'DESC']] : [['id', 'ASC']]
+//         });
+//         return blogs;
+//     } catch (error) {
+//         console.error("Error getting blogs:", error);
+//         throw error;
+//     }
+// };
+let getAllBlogs = async (isNewest, limit) => {
     try {
+        // Nếu limit không có, lấy tất cả
         let blogs = await db.Blog.findAll({
-            order: isNewest ? [['id', 'DESC']] : [['id', 'ASC']]
+            order: isNewest ? [['id', 'DESC']] : [['id', 'ASC']],  // Sắp xếp theo ID, mới nhất trước
+            limit: limit || null  // Nếu limit có giá trị thì giới hạn, nếu không thì lấy tất cả
         });
         return blogs;
     } catch (error) {

@@ -1,7 +1,6 @@
 import express from "express"
 import bloglistController from "../controllers/bloglistController";
 import blogsingleController from "../controllers/blogsingleController";
-import contactController from "../controllers/contactController";
 import indexController from "../controllers/indexController";
 import pages404Controller from "../controllers/pages404Controller";
 import pagesloginController from "../controllers/loginController";
@@ -15,8 +14,6 @@ let initWebRoutes = (app) => {
     router.get('/', indexController.getIndexPage);
 
     router.get('/blog-list', bloglistController.getBlogListPage);
-
-    router.get('/contact', contactController.getContactPage);
 
     router.get('/blog-single', blogsingleController.getBlogSinglePage);
 
