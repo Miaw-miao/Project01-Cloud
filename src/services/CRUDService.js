@@ -21,6 +21,33 @@ let createNewCRUD = async (data) => {
     })
 }
 
+let createNewUser = async (username, password, role) => {
+    try {
+        // Kiểm tra xem username đã tồn tại chưa
+        let existingUser = await db.User.findOne({
+            where: {
+                username: username
+            }
+        });
+
+        if (existingUser) {
+            throw new Error('Username already exists');
+        }
+
+        // Tạo người dùng mới
+        let newUser = await db.User.create({
+            username: username,
+            password: password,  // Nếu bạn muốn mã hóa mật khẩu, bạn cần thêm bước mã hóa ở đây
+            role: role
+        });
+
+        // Trả về người dùng mới đã tạo
+        return newUser;
+    } catch (error) {
+        throw error;
+    }
+};
+
 let deleteBlogById = async (blogId) => {
     try {
         let blog = await db.Blog.findOne({
@@ -72,6 +99,13 @@ let getBlogById = async (blogId) => {
 
             let blog = await db.Blog.findOne({
                 where: { id: blogId },
+                include: [
+                    {
+                        model: db.User,
+                        as: 'authorData',
+                        attributes: ['username'] // chỉ lấy username, không lấy password, id,...
+                    }
+                ]
             });
 
             resolve(blog);
@@ -80,6 +114,7 @@ let getBlogById = async (blogId) => {
         }
     });
 };
+
 
 let editBlogById = async (id, updatedData) => {
     try {
@@ -108,10 +143,28 @@ let editBlogById = async (id, updatedData) => {
     }
 };
 
+let getUserByUsername = async (username) => {
+    try {
+        // Truy vấn User trong cơ sở dữ liệu với điều kiện username
+        let user = await db.User.findOne({
+            where: {
+                username: username
+            }
+        });
+
+        // Trả về user nếu tìm thấy, hoặc null nếu không tìm thấy
+        return user;
+    } catch (error) {
+        throw new Error('Database error: ' + error.message);
+    }
+};
+
 module.exports = {
     createNewCRUD: createNewCRUD,
     deleteBlogById: deleteBlogById,
     getAllBlogs: getAllBlogs,
     getBlogById: getBlogById,
     editBlogById: editBlogById,
+    createNewUser: createNewUser,
+    getUserByUsername: getUserByUsername,
 }

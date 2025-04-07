@@ -3,10 +3,18 @@ import bodyParser from "body-parser";
 import viewEngine from "./config/viewEngine";
 import initWebRoutes from "./route/web";
 import connectDB from "./config/connectDB";
+import session from 'express-session';
 import path from 'path';
 require('dotenv').config();
 
 let app = express();
+
+app.use(session({
+    secret: 'userLogin', // Khóa bí mật để mã hóa session
+    resave: false,
+    saveUninitialized: false,
+    cookie: { secure: false } // Thiết lập cookie, `secure: true` cần HTTPS
+}));
 
 app.use(express.static(path.join(__dirname, 'public')));
 

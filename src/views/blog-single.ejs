@@ -33,7 +33,7 @@
 			<!-- Logo -->
 			<div class="logo">
 				<br href="index.ejs" title="">
-					<img class="logo-img" src="/img/logo2.jpg" alt="Logo" /></br>
+					<img class="logo-img" src="/img/logo4.png" alt="Logo" /></br>
 					<p class="logo-title">Stereo Heart</p>
 				</a>
 			</div>
@@ -45,11 +45,7 @@
 						<li><a href="/index">Home</a></li>
 						<li><a href="/search">Search</a></li>
 						<li><a href="/blog-list">Blog</a></li>
-						<li><span>Manage Account</span>
-							<ul>
-								<li><a href="/login">Log Out</a></li>
-							</ul>
-						</li>
+						<li><a href="/contact">Contact</a></li>
 					</ul>				</div>
 				</div>
 				<div class="clear"></div>
@@ -63,34 +59,35 @@
 				<!-- Main Column -->
 				<div class="col-md-9">
 					<div class="blog-post">
-					  	<div class="blog-item-header">
+						<div class="blog-item-header">
 							<div class="blog-post-date pull-left">
-							  <span class="day"><%= new Date(blog.createdAt).getDate() %></span>
-							  <span class="month"><%= new Date(blog.createdAt).toLocaleString('en-US', { month: 'short' }) %></span>
+								<span class="day"><%= new Date(blog.createdAt).getDate() %></span>
+								<span class="month"><%= new Date(blog.createdAt).toLocaleString('en-US', { month: 'short' }) %></span>
 							</div>
 							<h2>
-							  <a href="#"><%= blog.title %></a>
+								<a href="#"><%= blog.title %></a>
 							</h2>
-					  	</div>
+						</div>
 				  
-					  	<div class="blog-post-details">
+						<div class="blog-post-details">
 							<!-- Author Name -->
 							<div class="blog-post-details-item blog-post-details-item-left user-icon">
-						  	<i class="fa fa-user"></i>
-						  	<a href="#"><%= blog.author || 'Admin' %></a>
+								<i class="fa fa-user"></i>
+								<a href="#"><%= blog.authorData.username %> </a>
 							</div>
 							<!-- End Author Name -->
 							<!-- modified date -->
 							<div class="blog-post-details-item blog-post-details-item-left blog-post-details-tags tags-icon">
-						  		<a href="#">Last modified date: <%= blog.updatedAt.toLocaleDateString('en-GB') %></a>
+								<a href="#">Last modified date: <%= blog.updatedAt.toLocaleDateString('en-GB') %></a>
 							</div>
 							<!-- End last modified date -->
-					  	</div>
+						</div>
 				  
-					  	<div class="blog-item">
+						<div class="blog-item">
 							<div class="clearfix"></div>
 							<div class="blog-post-body row margin-top-15">
 						  		<div class="col-md-5">
+									<img class="pull-left" src="<%= blog.image || '/img/blog/image1.jpg' %>" alt="image">
 									<img class="pull-left" src="<%= blog.image || '/img/blog/image1.jpg' %>" alt="image">
 						  		</div>
 						  		<div class="col-md-7">
@@ -110,8 +107,6 @@
 										</small>
 									</blockquote>
 									<% } %>
-				  
-									<p><%= blog.additionalContent || '' %></p>
 								</div>
 							</div>
 				  
@@ -192,8 +187,7 @@
 												<span class="date"><i class="fa fa-clock-o"></i> 10 May 2013</span>
 											</div>
 										</div>
-									</li>
-									
+									</li>								
 									
 									<!-- Comment Form -->
 									<li class="list-group-item">
@@ -232,10 +226,11 @@
 						<!-- Main Button -->
 						<button class="floating-btn" id="toggleBtn" onclick="toggleMenu()">+</button>
 
-						<!-- List Button -->
-						<div class="floating-menu" id="menu">
-							<button class="btn1" title="Edit Blog">Edit</button>
-							<button class="btn1" title="Delete Blog">Delete</button>
+							<!-- List Button -->
+							<div class="floating-menu" id="menu">
+								<button class="btn1 btn-edit" title="Edit Blog">Edit</button>
+								<button class="btn1 btn-delete" title="Delete Blog">Delete</button>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -390,13 +385,19 @@
 						<!-- End Contact Details -->
 						<!-- Sample Menu -->
 						<div class="col-md-3 margin-bottom-20" >
-							<h3 class="margin-bottom-10">Web development team members</h3>
-							<ul class="menu">	
+							<h3 class="margin-bottom-10">Sample Menu</h3>
+							<ul class="menu">
 								<li>
-									<p style="margin-bottom: 0;">DO HANH THAO - 22120338</p>
+									<a class="fa-tasks" href="#" >Placerat facer possim</a>
 								</li>
 								<li>
-									<p>NGUYEN MINH THIEN - 22120341</p>
+									<a class="fa-users" href="#" >Quam nunc putamus</a>
+								</li>
+								<li>
+									<a class="fa-signal" href="#" >Velit esse molestie</a>
+								</li>
+								<li>
+									<a class="fa-coffee" href="#">Nam liber tempor</a>
 								</li>
 							</ul>
 							<div class="clearfix"></div>
@@ -406,9 +407,7 @@
 						<!-- Disclaimer -->
 						<div class="col-md-3 margin-bottom-20">
 							<h3 class="margin-bottom-10">Disclaimer</h3>
-							<p>The articles in this blog are only to share personal experiences about the types of TWS on the market, 
-								we do not accept advertising for the products in the article.</p>
-							<p>We use web template and images from the internet.</p>
+							<p>All stock images on this template demo are for presentation purposes only, intended to represent a live site and are not included with this template. Links are provided if you wish to purchase them from their copyright owners.</p>
 							<div class="clearfix"></div>
 						</div>
 						<!-- End Disclaimer -->
@@ -463,3 +462,24 @@
 		</body>
 	</html>
 	<!-- === END FOOTER === -->
+
+	<script>
+		document.querySelector('.btn-delete').addEventListener('click', () => {
+		  const blogId = '<%= blog.id %>';
+		  if (confirm('Bạn có chắc muốn xóa blog này không?')) {
+			fetch(`/blog/${blogId}`, {
+			  method: 'DELETE'
+			})
+			.then(res => res.json())
+			.then(data => {
+			  alert(data.message || "Xóa thành công.");
+			  window.location.href = '/blog-single?id=<%= blog.id %>';
+			})
+			.catch(err => {
+			  alert("Xóa thất bại.");
+			  console.error(err);
+			});
+		  }
+		});
+	  </script>
+	  
