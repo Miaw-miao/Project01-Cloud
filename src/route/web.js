@@ -7,6 +7,7 @@ import pages404Controller from "../controllers/pages404Controller";
 import pagesloginController from "../controllers/loginController";
 import pagessignupController from "../controllers/signupController";
 import searchController from "../controllers/searchController";
+import addblogController from "../controllers/addblogController";
 
 let router = express.Router();
 
@@ -30,6 +31,8 @@ let initWebRoutes = (app) => {
     router.get('/login', pagesloginController.getLoginPage);
 
     router.get('/signup', pagessignupController.getSignUpPage);
+
+    router.get('/add-blog', addblogController.getAddBlogPage);
     return app.use("/", router);
 }
 
