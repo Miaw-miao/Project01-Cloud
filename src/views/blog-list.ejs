@@ -69,7 +69,7 @@
 							</li>
 							<li class="dropdown">
 								<button class="btn btn-default dropdown-toggle" type="button" id="post-date-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100px;">
-									Post Date <span class="caret"></span>
+									<%= isNewest ? 'Latest' : 'Oldest' %> <span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu" aria-labelledby="post-date-dropdown">
 									<li><a href="#" type="button" class="btn btn-default" data-sort="latest">Latest</a></li>
@@ -389,3 +389,17 @@
 	</body>
 </html>
 <!-- === END FOOTER === -->
+
+<script>
+	document.querySelectorAll('.dropdown-menu a[data-sort]').forEach(item => {
+		item.addEventListener('click', function (e) {
+			e.preventDefault();
+
+			const sortType = this.getAttribute('data-sort');
+			const isNewest = sortType === 'latest' ? 'true' : 'false';
+
+			// Gửi request tới server với query isNewest
+			window.location.href = `/blog-list?isNewest=${isNewest}`;
+		});
+	});
+</script>
