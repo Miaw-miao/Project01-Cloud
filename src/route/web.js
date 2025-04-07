@@ -7,6 +7,7 @@ import pages404Controller from "../controllers/pages404Controller";
 import pagesloginController from "../controllers/loginController";
 import pagessignupController from "../controllers/signupController";
 import searchController from "../controllers/searchController";
+import addblogController from "../controllers/addblogController";
 
 let router = express.Router();
 
@@ -34,6 +35,12 @@ let initWebRoutes = (app) => {
     router.post('/login', pagesloginController.postLoginPage);
 
     router.get('/signup', pagessignupController.getSignUpPage);
+
+    router.post('/signup', pagessignupController.createUser);
+
+    router.get('/add-blog', addblogController.getAddBlogPage);
+
+    router.post('/add-blog', addblogController.addBlog);
     return app.use("/", router);
 }
 

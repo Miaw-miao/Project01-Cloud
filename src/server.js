@@ -12,7 +12,7 @@ let app = express();
 app.use(session({
     secret: 'userLogin', // Khóa bí mật để mã hóa session
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie: { secure: false } // Thiết lập cookie, `secure: true` cần HTTPS
 }));
 

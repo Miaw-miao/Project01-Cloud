@@ -2766,4 +2766,60 @@ ul.posts-list li {
   visibility: visible;
   transform: translateY(0);
 }
+.btn1:hover{
+  background-color: darkgrey;
+}
 /* End Button */
+
+/* Add Blog */
+/* Add image for blog */
+.add-img{
+  background-color: darkgray;
+  color: black;
+  border-color: white;
+}
+#upload-img{
+  display: none;
+}
+#preview-container{
+  display: none;
+  width: fit-content;
+  position: relative;
+}
+#remove-preview{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+  display: none;
+  cursor: pointer;
+  z-index: 10;
+}
+#remove-preview:hover{
+  color: red;
+  background: rgba(0, 0, 0, 0.4);
+}
+#preview-img{
+  max-width: 100%;
+  width: 100px;
+  object-fit: cover;
+  height: auto;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+/* Submit button */
+.submit-row{
+  text-align: right;
+}
+.submit-row .btn{
+  margin-top: 15px;
+}
+/* End Add blog */
