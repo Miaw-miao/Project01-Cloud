@@ -62,7 +62,7 @@
 					  <div class="blog-item-header">
 						<div class="blog-post-date pull-left">
 						  <span class="day"><%= new Date(blog.createdAt).getDate() %></span>
-						  <span class="month"><%= new Date(blog.createdAt).toLocaleString('default', { month: 'short' }) %></span>
+						  <span class="month"><%= new Date(blog.createdAt).toLocaleString('en-US', { month: 'short' }) %></span>
 						</div>
 						<h2>
 						  <a href="#"><%= blog.title %></a>
@@ -73,7 +73,7 @@
 						<!-- Author Name -->
 						<div class="blog-post-details-item blog-post-details-item-left user-icon">
 						  <i class="fa fa-user"></i>
-						  <a href="#"><%= blog.author || 'Admin' %></a>
+						  <a href="#"><%= blog.authorData.username %> </a>
 						</div>
 						<!-- End Author Name -->
 						<!-- modified date -->
@@ -87,13 +87,13 @@
 						<div class="clearfix"></div>
 						<div class="blog-post-body row margin-top-15">
 						  <div class="col-md-5">
-							<img class="pull-left" src="<%= blog.image || '/img/blog/default.jpg' %>" alt="image">
+							<img class="pull-left" src="<%= blog.image || '/img/blog/image1.jpg' %>" alt="image">
 						  </div>
 						  <div class="col-md-7">
 							<p><%= blog.summary || '' %></p>
 						  </div>
 						  <div class="col-md-12">
-							<p><%= blog.content || '' %></p>
+							<pre><%= blog.content || '' %></pre>
 				  
 							<% if (blog.quote) { %>
 							<blockquote class="primary">
@@ -228,8 +228,8 @@
 
 							<!-- List Button -->
 							<div class="floating-menu" id="menu">
-								<button class="btn1" title="Edit Blog">Edit</button>
-								<button class="btn1" title="Delete Blog">Delete</button>
+								<button class="btn1 btn-edit" title="Edit Blog">Edit</button>
+								<button class="btn1 btn-delete" title="Delete Blog">Delete</button>
 							</div>
 						</div>
 					</div>
@@ -461,3 +461,24 @@
 		</body>
 	</html>
 	<!-- === END FOOTER === -->
+
+	<script>
+		document.querySelector('.btn-delete').addEventListener('click', () => {
+		  const blogId = '<%= blog.id %>';
+		  if (confirm('Bạn có chắc muốn xóa blog này không?')) {
+			fetch(`/blog/${blogId}`, {
+			  method: 'DELETE'
+			})
+			.then(res => res.json())
+			.then(data => {
+			  alert(data.message || "Xóa thành công.");
+			  window.location.href = '/blog-list';
+			})
+			.catch(err => {
+			  alert("Xóa thất bại.");
+			  console.error(err);
+			});
+		  }
+		});
+	  </script>
+	  

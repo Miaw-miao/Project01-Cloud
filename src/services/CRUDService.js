@@ -59,6 +59,13 @@ let getBlogById = async (blogId) => {
 
             let blog = await db.Blog.findOne({
                 where: { id: blogId },
+                include: [
+                    {
+                        model: db.User,
+                        as: 'authorData',
+                        attributes: ['username'] // chỉ lấy username, không lấy password, id,...
+                    }
+                ]
             });
 
             resolve(blog);
@@ -67,6 +74,7 @@ let getBlogById = async (blogId) => {
         }
     });
 };
+
 
 let editBlogById = async (id, updatedData) => {
     try {

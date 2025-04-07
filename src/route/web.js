@@ -19,6 +19,8 @@ let initWebRoutes = (app) => {
 
     router.get('/blog-single', blogsingleController.getBlogSinglePage);
 
+    router.delete('/blog/:id', blogsingleController.deleteBlog);
+
     router.get('/search', searchController.getSearchPage);
 
     router.get('/search/results', searchController.searchBlog);
@@ -28,6 +30,8 @@ let initWebRoutes = (app) => {
     router.get('/index', indexController.getIndexPage);
 
     router.get('/login', pagesloginController.getLoginPage);
+
+    router.post('/login', pagesloginController.postLoginPage);
 
     router.get('/signup', pagessignupController.getSignUpPage);
     return app.use("/", router);
