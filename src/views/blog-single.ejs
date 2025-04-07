@@ -59,135 +59,84 @@
 				<!-- Main Column -->
 				<div class="col-md-9">
 					<div class="blog-post">
-					  <div class="blog-item-header">
-						<div class="blog-post-date pull-left">
-						  <span class="day"><%= new Date(blog.createdAt).getDate() %></span>
-						  <span class="month"><%= new Date(blog.createdAt).toLocaleString('en-US', { month: 'short' }) %></span>
-						</div>
-						<h2>
-						  <a href="#"><%= blog.title %></a>
-						</h2>
-					  </div>
-				  
-					  <div class="blog-post-details">
-						<!-- Author Name -->
-						<div class="blog-post-details-item blog-post-details-item-left user-icon">
-						  <i class="fa fa-user"></i>
-						  <a href="#"><%= blog.authorData.username %> </a>
-						</div>
-						<!-- End Author Name -->
-						<!-- modified date -->
-						<div class="blog-post-details-item blog-post-details-item-left blog-post-details-tags tags-icon">
-						  <a href="#">Last modified date: <%= blog.updatedAt.toLocaleDateString('en-GB') %></a>
-						</div>
-						<!-- End last modified date -->
-					  </div>
-				  
-					  <div class="blog-item">
-						<div class="clearfix"></div>
-						<div class="blog-post-body row margin-top-15">
-						  <div class="col-md-5">
-							<img class="pull-left" src="<%= blog.image || '/img/blog/image1.jpg' %>" alt="image">
-						  </div>
-						  <div class="col-md-7">
-							<p><%= blog.summary || '' %></p>
-						  </div>
-						  <div class="col-md-12">
-							<pre><%= blog.content || '' %></pre>
-				  
-							<% if (blog.quote) { %>
-							<blockquote class="primary">
-							  <p><em><%= blog.quote %></em></p>
-							  <small>
-								Someone famous in
-								<cite title="Source Title">Source Title</cite>
-							  </small>
-							</blockquote>
-							<% } %>
-				  
-							<p><%= blog.additionalContent || '' %></p>
-						  </div>
-						</div>
-				  
-						<!-- Tác giả -->
-						<div class="blog-item-footer">
-						  <div class="blog-author panel panel-default margin-bottom-30">
-							<div class="panel-heading">
-							  <h3>About the Author</h3>
+						<div class="blog-item-header">
+							<div class="blog-post-date pull-left">
+								<span class="day"><%= new Date(blog.createdAt).getDate() %></span>
+								<span class="month"><%= new Date(blog.createdAt).toLocaleString('en-US', { month: 'short' }) %></span>
 							</div>
 							<h2>
-							  <a href="#"><%= blog.title %></a>
+								<a href="#"><%= blog.title %></a>
 							</h2>
-					  	</div>
+						</div>
 				  
-					  	<div class="blog-post-details">
+						<div class="blog-post-details">
 							<!-- Author Name -->
 							<div class="blog-post-details-item blog-post-details-item-left user-icon">
-						  	<i class="fa fa-user"></i>
-						  	<a href="#"><%= blog.author || 'Admin' %></a>
+								<i class="fa fa-user"></i>
+								<a href="#"><%= blog.authorData.username %> </a>
 							</div>
 							<!-- End Author Name -->
 							<!-- modified date -->
 							<div class="blog-post-details-item blog-post-details-item-left blog-post-details-tags tags-icon">
-						  		<a href="#">Last modified date: <%= blog.updatedAt.toLocaleDateString('en-GB') %></a>
+								<a href="#">Last modified date: <%= blog.updatedAt.toLocaleDateString('en-GB') %></a>
 							</div>
 							<!-- End last modified date -->
-					  	</div>
+						</div>
 				  
-					  	<div class="blog-item">
+						<div class="blog-item">
 							<div class="clearfix"></div>
 							<div class="blog-post-body row margin-top-15">
 						  		<div class="col-md-5">
-									<img class="pull-left" src="<%= blog.image || '/img/blog/default.jpg' %>" alt="image">
+									<img class="pull-left" src="<%= blog.image || '/img/blog/image1.jpg' %>" alt="image">
 						  		</div>
 						  		<div class="col-md-7">
 									<p><%= blog.summary || '' %></p>
 						  		</div>
-						  		<div class="col-md-12">
+							</div>
+							<div class="blog-post-body row margin-top-15">
+								<div class="col-md-12" style="margin-top: 15px;">
 									<p><%= blog.content || '' %></p>
 				  
 									<% if (blog.quote) { %>
 									<blockquote class="primary">
-							  			<p><em><%= blog.quote %></em></p>
+										  <p><em><%= blog.quote %></em></p>
 										<small>
 											Someone famous in
 											<cite title="Source Title">Source Title</cite>
 										</small>
 									</blockquote>
 									<% } %>
-				  
-									<p><%= blog.additionalContent || '' %></p>
-						  		</div>
+								</div>
 							</div>
 				  
 							<!-- Tác giả -->
 							<div class="blog-item-footer">
-							<div class="blog-author panel panel-default margin-bottom-30">
-								<div class="panel-heading">
-								<h3>About the Author</h3>
-								</div>
-								<div class="panel-body">
-								<div class="row author-info">
-									<div class="col-md-2">
-									<img class="pull-left author-pic" src="/img/profiles/admin2.jpg" alt="admin2">
+								<div class="blog-author panel panel-default margin-bottom-30">
+									<div class="panel-heading">
+										<h3>About the Author</h3>
 									</div>
-									<div class="col-md-10">
-									<label>Do Hanh Thao</label>
-									<p>Student ID: 22120338.</p>
+									<div class="panel-body">
+										<div class="row author-info">
+											<div class="col-md-2">
+												<img class="pull-left author-pic" src="/img/profiles/admin2.jpg" alt="admin2">
+											</div>
+											<div class="col-md-10">
+												<label>Do Hanh Thao</label>
+												<p>Student ID: 22120338.</p>
+											</div>
+										</div>
+										<hr>
+										<div class="row author-info">
+											<div class="col-md-2">
+												<img class="pull-left author-pic" src="/img/profiles/admin1.jpg" alt="admin1">
+											</div>
+											<div class="col-md-10">
+												<label	label>Nguyen Minh Thien</label>
+												<p>Student ID: 22120341.</p>
+											</div>
+										</div>
 									</div>
 								</div>
-								<hr>
-								<div class="row author-info">
-									<div class="col-md-2">
-									<img class="pull-left author-pic" src="/img/profiles/admin1.jpg" alt="admin1">
-									</div>
-									<div class="col-md-10">
-									<label>Nguyen Minh Thien</label>
-									<p>Student ID: 22120341.</p>
-									</div>
-								</div>
-								</div>
-							</div>
 							</div>
 							<!-- Comments -->
 							<div class="blog-recent-comments panel panel-default margin-bottom-30">
@@ -237,8 +186,7 @@
 												<span class="date"><i class="fa fa-clock-o"></i> 10 May 2013</span>
 											</div>
 										</div>
-									</li>
-									
+									</li>								
 									
 									<!-- Comment Form -->
 									<li class="list-group-item">

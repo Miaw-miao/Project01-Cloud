@@ -33,7 +33,7 @@
 			<!-- Logo -->
 			<div class="logo">
 				<br href="index.ejs" title="">
-					<img class="logo-img" src="/img/logo4.png" alt="Logo" /></br>
+					<img class="logo-img" src="/img/logo2.jpg" alt="Logo" /></br>
 					<p class="logo-title">Stereo Heart</p>
 				</a>
 			</div>
@@ -45,7 +45,11 @@
 						<li><a href="/index">Home</a></li>
 						<li><a href="/search">Search</a></li>
 						<li><a href="/blog-list">Blog</a></li>
-						<li><a href="/contact">Contact</a></li>
+						<li><span>Manage Account</span>
+							<ul>
+								<li><a href="/login">Log Out</a></li>
+							</ul>
+						</li>
 					</ul>				</div>
 				</div>
 				<div class="clear"></div>
@@ -135,67 +139,32 @@
 				</div> -->
 				<!-- End Side Column -->
 			</div>
+
 			<div class="row">
 				<!-- Portfolio -->
 				<!-- Portfolio Item -->
-				<div class="portfolio-item col-sm-4 animate fadeIn">
-					<div class="image-hover">
-						<a href="#">
-							<figure>
-								<img src="/img/frontpage/filler1.jpg" alt="image1">
-								<div class="overlay">
-									<a class="expand" href="#">Image Link</a>
+				<% blogs.forEach(function(blog) { %>
+					<div class="portfolio-item col-sm-4 animate fadeIn">
+						<div class="image-hover">
+							<a href="#">
+								<figure>
+									<img src="<%= blog.image || '/img/blog/image1.jpg' %>" alt="image">
+									<div class="overlay">
+										<a class="expand" href="#">Image Link</a>
+									</div>
+								</figure>
+								<h3 class="margin-top-20"><%= blog.title || 'Default Title' %></h3>
+								<p class="description margin-top-10 margin-bottom-20"><%= blog.description || 'No description available.' %></p>
+								<div class="btn btn-default">
+									<a class="info" href="/blog-single?id=<%= blog.id %>">Read more</a>
 								</div>
-							</figure>
-							<h3 class="margin-top-20">Quam putamus</h3>
-							<p class="margin-top-10 margin-bottom-20">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-							<div class="btn btn-default">
-								<a class="info" href="http://localhost/build/substance/index.php/quam-nunc-putamus">Read more</a>
-							</div>
-						</a>
+							</a>
+						</div>
 					</div>
-				</div>
-				<!-- //Portfolio Item// -->
-				<!-- Portfolio Item -->
-				<div class="portfolio-item col-sm-4 animate fadeIn">
-					<div class="image-hover">
-						<a href="#">
-							<figure>
-								<img src="/img/frontpage/filler2.jpg" alt="image2">
-								<div class="overlay">
-									<a class="expand" href="#">Image Link</a>
-								</div>
-							</figure>
-							<h3 class="margin-top-20">Quam putamus</h3>
-							<p class="margin-top-10 margin-bottom-20">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-							<div class="btn btn-default">
-								<a class="info" href="http://localhost/build/substance/index.php/quam-nunc-putamus">Read more</a>
-							</div>
-						</a>
-					</div>
-				</div>
-				<!-- //Portfolio Item// -->
-				<!-- Portfolio Item -->
-				<div class="portfolio-item col-sm-4 animate fadeIn">
-					<div class="image-hover">
-						<a href="#">
-							<figure>
-								<img src="/img/frontpage/filler3.jpg" alt="image3">
-								<div class="overlay">
-									<a class="expand" href="#">Image Link</a>
-								</div>
-							</figure>
-							<h3 class="margin-top-20">Quam putamus</h3>
-							<p class="margin-top-10 margin-bottom-20">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-							<div class="btn btn-default">
-								<a class="info" href="http://localhost/build/substance/index.php/quam-nunc-putamus">Read more</a>
-							</div>
-						</a>
-					</div>
-				</div>
-				<!-- //Portfolio Item// -->
+				<% }); %>
 				<!-- End Portfolio -->
 			</div>
+			
 			<div class="row">
 				<h2 class="text-center margin-top-10">Cám ơn các bạn đã ghé qua blog của chúng mình!!!</h2>
 				<p class="text-center margin-bottom-30">Hi vọng các blog chia sẻ trải nghiệm ở trên có thể giúp ích cho bạn trong việc tìm 
@@ -287,19 +256,13 @@
 					<!-- End Contact Details -->
 					<!-- Sample Menu -->
 					<div class="col-md-3 margin-bottom-20" >
-						<h3 class="margin-bottom-10">Sample Menu</h3>
-						<ul class="menu">
+						<h3 class="margin-bottom-10">Web development team members</h3>
+						<ul class="menu">	
 							<li>
-								<a class="fa-tasks" href="#" >Placerat facer possim</a>
+								<p style="margin-bottom: 0;">DO HANH THAO - 22120338</p>
 							</li>
 							<li>
-								<a class="fa-users" href="#" >Quam nunc putamus</a>
-							</li>
-							<li>
-								<a class="fa-signal" href="#" >Velit esse molestie</a>
-							</li>
-							<li>
-								<a class="fa-coffee" href="#">Nam liber tempor</a>
+								<p>NGUYEN MINH THIEN - 22120341</p>
 							</li>
 						</ul>
 						<div class="clearfix"></div>
@@ -309,7 +272,9 @@
 					<!-- Disclaimer -->
 					<div class="col-md-3 margin-bottom-20">
 						<h3 class="margin-bottom-10">Disclaimer</h3>
-						<p>All stock images on this template demo are for presentation purposes only, intended to represent a live site and are not included with this template. Links are provided if you wish to purchase them from their copyright owners.</p>
+						<p>The articles in this blog are only to share personal experiences about the types of TWS on the market, 
+							we do not accept advertising for the products in the article.</p>
+						<p>We use web template and images from the internet.</p>
 						<div class="clearfix"></div>
 					</div>
 					<!-- End Disclaimer -->
