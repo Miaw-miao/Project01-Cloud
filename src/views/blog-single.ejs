@@ -57,7 +57,7 @@
 		<div id="content" class="container">
 			<div class="row margin-vert-30">
 				<!-- Main Column -->
-				<div class="col-md-9">
+				<div class="col-md-11">
 					<div class="blog-post">
 						<div class="blog-item-header">
 							<div class="blog-post-date pull-left">
@@ -92,7 +92,7 @@
 							</div>
 							<div class="blog-post-body row margin-top-15">
 								<div class="col-md-12" style="margin-top: 15px;">
-									<p><%= blog.content || '' %></p>
+									<p style="white-space: pre-line;"><%= blog.content ? blog.content : '' %></p>
 				  
 									<% if (blog.quote) { %>
 									<blockquote class="primary">
@@ -232,72 +232,8 @@
 				</div>
 				<!-- End Blog Post -->
 				<!-- End Main Column -->
-				<!-- Side Column -->
-				<div class="col-md-3 right-box">
-					<!-- Recent Posts -->
-					<div class="recent-posts">
-						<h3>Recent Posts</h3>
-						<ul class="posts-list margin-top-10">
-							<li>
-								<div class="recent-post">
-									<a href="#">
-										<img class="pull-left" src="/img/blog/thumbs/thumb1.jpg" alt="thumb1">
-									</a>
-									<a href="#" class="posts-list-title">Sidebar post example </a>
-									<br>
-									<span class="recent-post-date">
-										July 30, 2013
-									</span>
-									</div>
-								<div class="clearfix"></div>
-							</li>
-							<li>
-								<div class="recent-post">
-									<a href="#">
-										<img class="pull-left" src="/img/blog/thumbs/thumb2.jpg" alt="thumb2">
-									</a>
-									<a href="#" class="posts-list-title">Sidebar post example </a>
-									<br>
-									<span class="recent-post-date">
-									July 30, 2013
-									</span>
-								</div>
-								<div class="clearfix"></div>
-							</li>
-							<li>
-								<div class="recent-post">
-									<a href="#">
-										<img class="pull-left" src="/img/blog/thumbs/thumb3.jpg" alt="thumb3">
-									</a>
-									<a href="#" class="posts-list-title">Sidebar post example </a>
-									<br>
-									<span class="recent-post-date">
-									July 30, 2013
-									</span>
-								</div>
-								<div class="clearfix"></div>
-							</li>
-							<li>
-								<div class="recent-post">
-									<a href="#">
-										<img class="pull-left" src="/img/blog/thumbs/thumb4.jpg" alt="thumb4">
-									</a>
-									<a href="#" class="posts-list-title">Sidebar post example </a>
-									<br>
-									<span class="recent-post-date">
-									July 30, 2013
-									</span>
-								</div>
-								<div class="clearfix"></div>
-							</li>
-						</ul>			</div>
-						<!-- End Recent Posts -->
-						<!-- End Side Column -->
-					</div>
-				</div>
 			</div>	
 			<!-- === END CONTENT === -->
-			
 		</div>
 		<!-- === BEGIN FOOTER === -->
 		<div id="base">
@@ -469,7 +405,7 @@
 			.then(res => res.json())
 			.then(data => {
 			  alert(data.message || "Xóa thành công.");
-			  window.location.href = '/blog-single?id=<%= blog.id %>';
+			  window.location.href = '/blog-list';
 			})
 			.catch(err => {
 			  alert("Xóa thất bại.");
@@ -477,5 +413,5 @@
 			});
 		  }
 		});
-	  </script>
+	</script>
 	  
