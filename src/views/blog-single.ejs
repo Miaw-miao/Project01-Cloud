@@ -469,7 +469,7 @@
 			.then(res => res.json())
 			.then(data => {
 			  alert(data.message || "Xóa thành công.");
-			  window.location.href = '/blog-single?id=<%= blog.id %>';
+			  window.location.href = '/blog-list';
 			})
 			.catch(err => {
 			  alert("Xóa thất bại.");

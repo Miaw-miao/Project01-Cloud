@@ -26,7 +26,7 @@ let deleteBlog = async (req, res) => {
         if (!blog) {
             return res.status(404).json({ message: 'Blog not found' });
         }
-        if (blog.author !== currentUser.username) {
+        if (blog.author !== currentUser.id) {
             return res.status(403).json({ message: 'Permission deny' });
         }
         await crud.deleteBlogById(blogId);
