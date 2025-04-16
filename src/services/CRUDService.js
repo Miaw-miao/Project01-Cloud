@@ -78,10 +78,16 @@ let deleteBlogById = async (blogId) => {
 // };
 let getAllBlogs = async (isNewest, limit) => {
     try {
-        // Nếu limit không có, lấy tất cả
         let blogs = await db.Blog.findAll({
-            order: isNewest ? [['id', 'DESC']] : [['id', 'ASC']],  // Sắp xếp theo ID, mới nhất trước
-            limit: limit || null  // Nếu limit có giá trị thì giới hạn, nếu không thì lấy tất cả
+            order: isNewest ? [['id', 'DESC']] : [['id', 'ASC']],
+            limit: limit || null,
+            include: [
+                {
+                    model: db.User,
+                    as: 'authorData',
+                    attributes: ['username'] // Lấy mỗi username của tác giả
+                }
+            ]
         });
         return blogs;
     } catch (error) {
@@ -89,6 +95,7 @@ let getAllBlogs = async (isNewest, limit) => {
         throw error;
     }
 };
+
 
 let getBlogById = async (blogId) => {
     return new Promise(async (resolve, reject) => {
@@ -115,34 +122,6 @@ let getBlogById = async (blogId) => {
     });
 };
 
-
-let editBlogById = async (id, updatedData) => {
-    try {
-        const blog = await db.Blog.findByPk(id);
-
-        if (!blog) {
-            throw new Error('Blog not found');
-        }
-
-        // Cập nhật các trường nếu có giá trị mới
-        await blog.update({
-            title: updatedData.title || blog.title,
-            content: updatedData.content || blog.content,
-            summary: updatedData.summary || blog.summary,
-            author: updatedData.author || blog.author,
-            image: updatedData.image || blog.image,
-            quote: updatedData.quote || blog.quote,
-            additionalContent: updatedData.additionalContent || blog.additionalContent,
-            updatedAt: new Date(),
-        });
-
-        return blog;
-
-    } catch (error) {
-        throw error;
-    }
-};
-
 let getUserByUsername = async (username) => {
     try {
         // Truy vấn User trong cơ sở dữ liệu với điều kiện username
@@ -164,7 +143,6 @@ module.exports = {
     deleteBlogById: deleteBlogById,
     getAllBlogs: getAllBlogs,
     getBlogById: getBlogById,
-    editBlogById: editBlogById,
     createNewUser: createNewUser,
     getUserByUsername: getUserByUsername,
 }

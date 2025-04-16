@@ -1,5 +1,6 @@
 import db from '../models/index'
 const { Op } = require('sequelize');
+import crud from "../services/CRUDService";
 
 let getSearchPage = async (req, res) => {
     return res.render('search.ejs');
@@ -41,14 +42,30 @@ let searchBlog = async (req, res) => {
         }
 
         let blogs = await db.Blog.findAll({
-            where: searchConditions
+            where: searchConditions,
+            include: [
+                {
+                    model: db.User,
+                    as: 'authorData',
+                    attributes: ['username']
+                }
+            ]
         });
 
         if (blogs.length === 0) {
             return res.render('pages-404.ejs');
         }
 
-        return res.render('blog-list.ejs', { blogs: blogs });
+        // Xác định giá trị isNewest
+        const isNewest = true;
+
+        let recentPosts = await crud.getAllBlogs(true, 4);
+
+        return res.render('blog-list.ejs', {
+            blogs: blogs,
+            isNewest: isNewest,
+            recentPosts: recentPosts
+        });
 
     } catch (error) {
         console.error(error);

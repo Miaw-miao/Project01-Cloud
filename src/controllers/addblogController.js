@@ -5,7 +5,7 @@ import path from 'path';
 
 let getAddBlogPage = async (req, res) => {
     try {
-        return res.render('add-blog.ejs');
+        return res.render('add-blog.ejs', { blog: null });
     } catch (err) {
         console.error(err);
         return res.status(500).send("Error loading blogs");
@@ -26,7 +26,6 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage }).single('image');
 
 let addBlog = async (req, res) => {
-    console.log('User ID: =========================================== ', req.session.user.author);
     upload(req, res, async (err) => {
         if (err) {
             console.error(err);

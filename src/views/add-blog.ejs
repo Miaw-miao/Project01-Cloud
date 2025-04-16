@@ -12,7 +12,7 @@
 	<meta name="author" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 	<!-- Favicon -->
-	<link href="favicon.html" rel="shortcut icon">
+	<link href="/favicon.html" rel="shortcut icon">
 	<!-- Bootstrap Core CSS -->
 	<link rel="stylesheet" href="/css/bootstrap.css" rel="stylesheet">
 	<!-- Template CSS -->
@@ -65,25 +65,47 @@
 				<div class="headline"><h2><strong>Write your Blog</strong></h2></div>
 				<p>Write whatever you like, never limit your imagination.</p><br>
 				<!-- Contact Form -->
-				<form id="add-blog-form">
+				<form id="blog-form" action="<%= blog ? '/edit-blog' : '/add-blog' %>" method="POST">
+					<!-- Hidden field để lưu ID của blog (chỉ khi edit) -->
+					<% if (blog) { %>
+						<input type="hidden" name="id" value="<%= blog.id %>">
+					<% } %>
+				
 					<label>Title <span class="color-red">*</span></label>
 					<div class="row margin-bottom-20">
 						<div class="col-md-8 col-md-offset-0">
-							<input class="form-control" type="text" name="title" required>
+							<input 
+								class="form-control" 
+								type="text" 
+								name="title" 
+								maxlength="40" 
+								required 
+								value="<%= blog ? blog.title : '' %>"
+							>
 						</div>
 					</div>
-					
+				
 					<label>Description <span class="color-red">*</span></label>
 					<div class="row margin-bottom-20">
 						<div class="col-md-10 col-md-offset-0">
-							<textarea rows="4" class="form-control" name="description" required></textarea>
+							<textarea 
+								rows="4" 
+								class="form-control" 
+								name="description" 
+								required
+							><%= blog ? blog.description : '' %></textarea>
 						</div>
 					</div>
-					
+				
 					<label>Content <span class="color-red">*</span></label>
 					<div class="row margin-bottom-20">
 						<div class="col-md-12 col-md-offset-0">
-							<textarea rows="8" class="form-control" name="content" required></textarea>
+							<textarea 
+								rows="8" 
+								class="form-control" 
+								name="content" 
+								required
+							><%= blog ? blog.content : '' %></textarea>
 						</div>
 					</div>
 					
@@ -93,7 +115,7 @@
 						  	<button type="button" class="add-img btn btn-primary" onclick="document.getElementById('upload-img').click();">
 								<strong>+</strong> Add image
 						  	</button>
-						  	<input type="file" id="upload-img" accept="image/*">
+						  	<input type="file" id="upload-img" name="image" accept="image/*">
 						</div>
 					  
 						<!-- Preview image -->
@@ -291,35 +313,42 @@
 	});
 
 
-	document.getElementById('add-blog-form').addEventListener('submit', async function(e) {
-        e.preventDefault();
-        const formData = new FormData(this);
-        const image = document.getElementById('upload-img').files[0];
+	document.getElementById('blog-form').addEventListener('submit', async function (e) {
+		e.preventDefault();
 
-        // Nếu có hình ảnh, thêm hình ảnh vào formData
-        if (image) {
-            formData.append('image', image);
-        }
+		const formData = new FormData(this);
+		const image = document.getElementById('upload-img').files[0];
 
-        try {
-            const response = await fetch('/add-blog', {
-                method: 'POST',
-                body: formData,
-				credentials: 'include'
-            });
+		// Nếu có hình ảnh, thêm hình ảnh vào formData
+		if (image && image.size > 0) {
+			formData.append('image', image);
+		}
+		formData.forEach((value, key) => {
+			console.log(`${key}:`, value);
+		});
+		// Lấy URL hành động từ thuộc tính `action` của form
+		const actionUrl = this.getAttribute('action');
 
-            const data = await response.json();
-            if (data.message) {
-                alert(data.message || 'Thêm blog thành công!');
-                window.location.href = '/blog-list'; // Chuyển hướng tới danh sách blog
-            } else {
-                alert('Có lỗi xảy ra khi thêm blog.');
-            }
-        } catch (err) {
-            alert('Lỗi khi gửi dữ liệu.');
-            console.error(err);
-        }
-    });
+		try {
+			const response = await fetch(actionUrl, {
+				method: 'POST',
+				body: formData,
+				credentials: 'include',
+			});
+
+			const data = await response.json();
+			if (data.message) {
+				alert(data.message || (actionUrl.includes('/add-blog') ? 'Thêm blog thành công!' : 'Chỉnh sửa blog thành công!'));
+				window.location.href = '/blog-list'; // Chuyển hướng tới danh sách blog
+			} else {
+				alert('Có lỗi xảy ra.');
+			}
+		} catch (err) {
+			alert('Lỗi khi gửi dữ liệu.');
+			console.error(err);
+		}
+	});
+
 </script>  
 <!-- End JS -->
 </body>

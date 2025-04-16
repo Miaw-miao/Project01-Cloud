@@ -7,6 +7,7 @@ import pagesloginController from "../controllers/loginController";
 import pagessignupController from "../controllers/signupController";
 import searchController from "../controllers/searchController";
 import addblogController from "../controllers/addblogController";
+import editblogController from "../controllers/editblogController";
 
 let router = express.Router();
 
@@ -38,6 +39,10 @@ let initWebRoutes = (app) => {
     router.get('/add-blog', addblogController.getAddBlogPage);
 
     router.post('/add-blog', addblogController.addBlog);
+
+    router.get('/edit-blog', editblogController.getEditBlogPage); // Hiển thị form edit blog
+
+    router.post('/edit-blog', editblogController.editBlogById);  // Cập nhật dữ liệu blog
     return app.use("/", router);
 }
 
