@@ -35,6 +35,10 @@ module.exports = {
       like_number: {
         type: Sequelize.INTEGER
       },
+      imageUrl: {
+        type: Sequelize.STRING,  // Định dạng chuỗi để lưu đường dẫn ảnh
+        allowNull: true  // Cho phép null vì không phải lúc nào cũng có ảnh
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

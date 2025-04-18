@@ -11,6 +11,7 @@ module.exports = {
         created_date: new Date(),
         last_modified_date: new Date(),
         like_number: 5,
+        imageUrl: null,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -22,6 +23,7 @@ module.exports = {
         created_date: new Date(),
         last_modified_date: new Date(),
         like_number: 10,
+        imageUrl: null,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -33,6 +35,7 @@ module.exports = {
         created_date: new Date(),
         last_modified_date: new Date(),
         like_number: 3,
+        imageUrl: null,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -44,6 +47,7 @@ module.exports = {
         created_date: new Date(),
         last_modified_date: new Date(),
         like_number: 23,
+        imageUrl: null,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -55,6 +59,7 @@ module.exports = {
         created_date: new Date(),
         last_modified_date: new Date(),
         like_number: 39,
+        imageUrl: null,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -66,6 +71,7 @@ module.exports = {
         created_date: new Date(),
         last_modified_date: new Date(),
         like_number: 56,
+        imageUrl: null,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -77,6 +83,7 @@ module.exports = {
         created_date: new Date(),
         last_modified_date: new Date(),
         like_number: 93,
+        imageUrl: null,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -88,6 +95,7 @@ module.exports = {
         created_date: new Date(),
         last_modified_date: new Date(),
         like_number: 104,
+        imageUrl: null,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -99,6 +107,7 @@ module.exports = {
         created_date: new Date(),
         last_modified_date: new Date(),
         like_number: 82,
+        imageUrl: null,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -110,6 +119,7 @@ module.exports = {
         created_date: new Date(),
         last_modified_date: new Date(),
         like_number: 134,
+        imageUrl: null,
         createdAt: new Date(),
         updatedAt: new Date()
       }

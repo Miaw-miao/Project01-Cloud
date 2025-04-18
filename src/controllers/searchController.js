@@ -3,6 +3,7 @@ const { Op } = require('sequelize');
 import crud from "../services/CRUDService";
 
 let getSearchPage = async (req, res) => {
+    console.log("Request User:", req.user);
     return res.render('search.ejs');
 }
 

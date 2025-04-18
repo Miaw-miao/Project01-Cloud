@@ -129,7 +129,7 @@
 						  
 					  
 						<div class="col-md-8">
-							<input class="descrip-img form-control" type="text" placeholder="Add description for the photo you just posted">
+							<input class="descrip-img form-control" type="text" name="imageDescription" placeholder="Add description for the photo you just posted">
 						</div>
 					</div>				  
 
@@ -317,12 +317,14 @@
 		e.preventDefault();
 
 		const formData = new FormData(this);
+		/*
 		const image = document.getElementById('upload-img').files[0];
 
 		// Nếu có hình ảnh, thêm hình ảnh vào formData
 		if (image && image.size > 0) {
 			formData.append('image', image);
 		}
+		*/
 		formData.forEach((value, key) => {
 			console.log(`${key}:`, value);
 		});

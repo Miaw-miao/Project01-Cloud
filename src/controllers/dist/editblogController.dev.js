@@ -65,7 +65,7 @@ var getEditBlogPage = function getEditBlogPage(req, res) {
 
 var storage = _multer["default"].diskStorage({
   destination: function destination(req, file, cb) {
-    cb(null, 'public/uploads/'); // Lưu vào thư mục uploads
+    cb(null, 'src/public/uploads/'); // Lưu vào thư mục uploads
   },
   filename: function filename(req, file, cb) {
     var ext = _path["default"].extname(file.originalname); // Lấy phần mở rộng của file

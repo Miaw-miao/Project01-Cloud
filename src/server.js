@@ -21,6 +21,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
+app.use((req, res, next) => {
+    req.user = req.session.user || null; // Gán user từ session nếu có
+    next();
+});
+
 viewEngine(app);
 initWebRoutes(app);
 

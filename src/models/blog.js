@@ -25,7 +25,11 @@ module.exports = (sequelize, DataTypes) => {
     content: DataTypes.TEXT,
     created_date: DataTypes.DATE,
     last_modified_date: DataTypes.DATE,
-    like_number: DataTypes.INTEGER
+    like_number: DataTypes.INTEGER,
+    imageUrl: { // Thêm trường imageUrl để lưu đường dẫn ảnh
+      type: DataTypes.STRING,
+      allowNull: true, // Cho phép null vì không phải lúc nào cũng có ảnh
+    },
   }, {
     sequelize,
     modelName: 'Blog',

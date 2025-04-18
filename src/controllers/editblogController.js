@@ -26,7 +26,7 @@ let getEditBlogPage = async (req, res) => {
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'public/uploads/'); // Lưu vào thư mục uploads
+        cb(null, 'src/public/uploads/'); // Lưu vào thư mục uploads
     },
     filename: (req, file, cb) => {
         const ext = path.extname(file.originalname);  // Lấy phần mở rộng của file

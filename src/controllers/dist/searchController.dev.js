@@ -16,9 +16,10 @@ var getSearchPage = function getSearchPage(req, res) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
+          console.log("Request User:", req.user);
           return _context.abrupt("return", res.render('search.ejs'));
 
-        case 1:
+        case 2:
         case "end":
           return _context.stop();
       }
