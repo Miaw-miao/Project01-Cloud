@@ -2421,26 +2421,41 @@ ul.social-icons li a:hover {
 /*-----------------------------------------------------------------------------------*/
 /* Blog */
 /*-----------------------------------------------------------------------------------*/
+.blog-post-date-wrapper {
+  display: flex;
+  width: fit-content;
+  align-items: stretch; /* đảm bảo chiều cao 2 khối bằng nhau */
+}
 .blog-post-date {
-  border: 0px solid #d7d4cd;
-  border-radius: 0px;
   background-color: #e8e5df;
   color: #fff;
   width: 38px;
+  height: 50px;
   text-align: center;
-  margin-right: 20px;
   font-size: 18px;
   font-weight: bold;
   font-family: 'Lato';
-  margin-top: 2px;
 }
 .blog-post-date .month {
   background: #d7d4cd;
   font-size: 14px;
   width: 100%;
   display: inline-block;
-  color: #ffffff;
   text-transform: uppercase;
+}
+.blog-post-year {
+  background-color: #a8a59f;
+  width: 38px; /* hoặc 100% nếu bạn đặt wrapper fixed width */
+  height: 50px;
+  text-align: center;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: 'Lato';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
 }
 .blog-post {
   margin-bottom: 30px;
