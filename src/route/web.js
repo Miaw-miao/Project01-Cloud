@@ -12,9 +12,7 @@ import editblogController from "../controllers/editblogController";
 let router = express.Router();
 
 let initWebRoutes = (app) => {
-    router.get('/', (req, res) => {
-        res.redirect('/login');
-    });
+    router.get('/', indexController.getIndexPage);
 
     router.get('/blog-list', bloglistController.getBlogListPage);
 

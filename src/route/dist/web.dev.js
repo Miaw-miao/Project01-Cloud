@@ -25,9 +25,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 var router = _express["default"].Router();
 
 var initWebRoutes = function initWebRoutes(app) {
-  router.get('/', function (req, res) {
-    res.redirect('/login');
-  });
+  router.get('/', _indexController["default"].getIndexPage);
   router.get('/blog-list', _bloglistController["default"].getBlogListPage);
   router.get('/blog-single', _blogsingleController["default"].getBlogSinglePage);
   router["delete"]('/blog/:id', _blogsingleController["default"].deleteBlog);
