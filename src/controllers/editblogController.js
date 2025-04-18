@@ -127,21 +127,24 @@ let editBlogById = async (req, res) => {
 
         // Nếu có ảnh mới thì xóa ảnh cũ và cập nhật đường dẫn mới
         if (req.file) {
-            const imageName = path.basename(oldBlog.imageUrl); // lấy tên file
-            const oldImagePath = path.join(__dirname, '..', 'public', 'uploads', imageName);
+            if (oldBlog.imageUrl) {
+                const imageName = path.basename(oldBlog.imageUrl); // lấy tên file
+                const oldImagePath = path.join(__dirname, '..', 'public', 'uploads', imageName);
         
-            if (fs.existsSync(oldImagePath)) {
-                fs.unlink(oldImagePath, (err) => {
-                    if (err) {
-                        console.error('Error can not delete image:', err);
-                    } else {
-                        console.log('Old image had been deleted:', imageName);
-                    }
-                });
+                if (fs.existsSync(oldImagePath)) {
+                    fs.unlink(oldImagePath, (err) => {
+                        if (err) {
+                            console.error('Error cannot delete image:', err);
+                        } else {
+                            console.log('Old image has been deleted:', imageName);
+                        }
+                    });
+                }
             }
         
+            // Cập nhật ảnh mới
             blogData.imageUrl = `/uploads/${req.file.filename}`;
-        }        
+        }             
 
         try {
             const updatedRows = await db.Blog.update(blogData, { where: { id } });
