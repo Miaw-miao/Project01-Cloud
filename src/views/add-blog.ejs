@@ -348,13 +348,13 @@
 
 			const data = await response.json();
 			if (data.message) {
-				alert(data.message || (actionUrl.includes('/add-blog') ? 'Thêm blog thành công!' : 'Chỉnh sửa blog thành công!'));
+				alert(data.message || (actionUrl.includes('/add-blog') ? 'Add blog successfully!' : 'Edit blog successfully!'));
 				window.location.href = '/blog-list'; // Chuyển hướng tới danh sách blog
 			} else {
-				alert('Có lỗi xảy ra.');
+				alert('Something went wrong!');
 			}
 		} catch (err) {
-			alert('Lỗi khi gửi dữ liệu.');
+			alert('Fail to submit data.');
 			console.error(err);
 		}
 	});

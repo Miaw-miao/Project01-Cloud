@@ -2491,6 +2491,13 @@ ul.social-icons li a:hover {
   margin: 0;
   padding: 0;
 }
+/* Image */
+.blog .pull-left{
+  width: 298.13px; 
+  height: 194.78px; 
+  object-fit: cover;
+}
+
 /* Blog - Tags */
 .blog-tags {
   list-style: none;
