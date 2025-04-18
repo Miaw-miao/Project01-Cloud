@@ -46,23 +46,31 @@ var getEditBlogPage = function getEditBlogPage(req, res) {
           return _context.abrupt("return", res.status(404).send("Blog not found"));
 
         case 10:
+          if (!(blog.author !== user.id)) {
+            _context.next = 12;
+            break;
+          }
+
+          return _context.abrupt("return", res.status(403).send("You are not authorized to edit this blog"));
+
+        case 12:
           return _context.abrupt("return", res.render('add-blog.ejs', {
             blog: blog,
             user: user
           }));
 
-        case 13:
-          _context.prev = 13;
+        case 15:
+          _context.prev = 15;
           _context.t0 = _context["catch"](0);
           console.error(_context.t0);
           return _context.abrupt("return", res.status(500).send("Error loading blogs"));
 
-        case 17:
+        case 19:
         case "end":
           return _context.stop();
       }
     }
-  }, null, null, [[0, 13]]);
+  }, null, null, [[0, 15]]);
 };
 
 var storage = _multer["default"].diskStorage({
@@ -142,9 +150,10 @@ var editBlogById = function editBlogById(req, res) {
 
                   case 13:
                     updatedRows = _context2.sent;
+                    console.log(updatedRows);
 
                     if (!(updatedRows[0] === 0)) {
-                      _context2.next = 16;
+                      _context2.next = 17;
                       break;
                     }
 
@@ -152,27 +161,28 @@ var editBlogById = function editBlogById(req, res) {
                       message: 'Blog not found!'
                     }));
 
-                  case 16:
+                  case 17:
                     return _context2.abrupt("return", res.status(200).json({
                       message: 'Blog updated successfully!',
+                      blog: blogData,
                       redirectUrl: "/blog-single?id=".concat(id) // Chuyển hướng frontend
 
                     }));
 
-                  case 19:
-                    _context2.prev = 19;
+                  case 20:
+                    _context2.prev = 20;
                     _context2.t0 = _context2["catch"](10);
                     console.error('Error updating blog:', _context2.t0);
                     return _context2.abrupt("return", res.status(500).json({
                       message: 'Error updating blog'
                     }));
 
-                  case 23:
+                  case 24:
                   case "end":
                     return _context2.stop();
                 }
               }
-            }, null, null, [[10, 19]]);
+            }, null, null, [[10, 20]]);
           });
 
         case 1:
