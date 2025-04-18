@@ -12,6 +12,8 @@ var _fs = _interopRequireDefault(require("fs"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var getEditBlogPage = function getEditBlogPage(req, res) {
   var blogId, user, blog;
   return regeneratorRuntime.async(function getEditBlogPage$(_context) {
@@ -48,23 +50,31 @@ var getEditBlogPage = function getEditBlogPage(req, res) {
           return _context.abrupt("return", res.status(404).send("Blog not found"));
 
         case 10:
+          if (!(blog.author !== user.id)) {
+            _context.next = 12;
+            break;
+          }
+
+          return _context.abrupt("return", res.status(403).send("You are not authorized to edit this blog"));
+
+        case 12:
           return _context.abrupt("return", res.render('add-blog.ejs', {
             blog: blog,
             user: user
           }));
 
-        case 13:
-          _context.prev = 13;
+        case 15:
+          _context.prev = 15;
           _context.t0 = _context["catch"](0);
           console.error(_context.t0);
           return _context.abrupt("return", res.status(500).send("Error loading blogs"));
 
-        case 17:
+        case 19:
         case "end":
           return _context.stop();
       }
     }
-  }, null, null, [[0, 13]]);
+  }, null, null, [[0, 15]]);
 };
 
 var storage = _multer["default"].diskStorage({
@@ -228,9 +238,10 @@ var editBlogById = function editBlogById(req, res) {
 
                   case 23:
                     updatedRows = _context2.sent;
+                    console.log(updatedRows);
 
                     if (!(updatedRows[0] === 0)) {
-                      _context2.next = 26;
+                      _context2.next = 27;
                       break;
                     }
 
@@ -238,26 +249,27 @@ var editBlogById = function editBlogById(req, res) {
                       message: 'Blog not found!'
                     }));
 
-                  case 26:
-                    return _context2.abrupt("return", res.status(200).json({
+                  case 27:
+                    return _context2.abrupt("return", res.status(200).json(_defineProperty({
                       message: 'Blog updated successfully!',
+                      blog: blogData,
                       redirectUrl: "/blog-single?id=".concat(id)
-                    }));
+                    }, "redirectUrl", "/blog-single?id=".concat(id))));
 
-                  case 29:
-                    _context2.prev = 29;
+                  case 30:
+                    _context2.prev = 30;
                     _context2.t1 = _context2["catch"](20);
                     console.error('Error updating blog:', _context2.t1);
                     return _context2.abrupt("return", res.status(500).json({
                       message: 'Error updating blog'
                     }));
 
-                  case 33:
+                  case 34:
                   case "end":
                     return _context2.stop();
                 }
               }
-            }, null, null, [[6, 14], [20, 29]]);
+            }, null, null, [[6, 14], [20, 30]]);
           });
 
         case 1:

@@ -149,16 +149,16 @@
 							</div>
 						</div>							
 
-						<% if (user && user.role === 'Admin') { %>
-							<!-- Main Button -->
-							<button class="floating-btn" id="toggleBtn" onclick="toggleMenu()">+</button>
-						
-							<!-- List Button -->
-							<div class="floating-menu" id="menu">
-								<button class="btn1 btn-edit" title="Edit Blog">Edit</button>
-								<button class="btn1 btn-delete" title="Delete Blog">Delete</button>
-							</div>
-						<% } %>
+							<% if (user && (user.role === 'Admin' && user.id === blog.author)) { %>
+								<!-- Main Button -->
+								<button class="floating-btn" id="toggleBtn" onclick="toggleMenu()">+</button>
+							
+								<!-- List Button -->
+								<div class="floating-menu" id="menu">
+									<button class="btn1 btn-edit" title="Edit Blog">Edit</button>
+									<button class="btn1 btn-delete" title="Delete Blog">Delete</button>
+								</div>
+							<% } %>
 					</div>
 				</div>
 				<!-- End Blog Post -->
@@ -319,6 +319,7 @@
 				} else {
 					button.textContent = "+";
 				}
+<<<<<<< HEAD
 			}
 		</script>
 		<!-- End JS -->
@@ -326,6 +327,46 @@
 </body>
 </html>
 <!-- === END FOOTER === -->
+=======
+			</script>
+			<!-- End JS -->
+		</body>
+	</html>
+	<!-- === END FOOTER === -->
+
+	<script>
+	document.addEventListener('DOMContentLoaded', () => {
+        const deleteButton = document.querySelector('.btn-delete');
+
+        // Kiểm tra nếu nút Delete tồn tại
+        if (deleteButton) {
+            deleteButton.addEventListener('click', () => {
+                const blogId = '<%= blog.id %>';
+
+                if (confirm('Bạn có chắc muốn xóa blog này không?')) {
+                    fetch(`/blog/${blogId}`, {
+                        method: 'DELETE'
+                    })
+                    .then(res => {
+                        if (!res.ok) {
+                            throw new Error('Lỗi khi xóa blog.');
+                        }
+                        return res.json();
+                    })
+                    .then(data => {
+                        alert(data.message || "Xóa thành công.");
+                        window.location.href = '/blog-list';
+                    })
+                    .catch(err => {
+                        alert("Xóa thất bại.");
+                        console.error(err);
+                    });
+                }
+            });
+        }
+    });
+	</script>
+>>>>>>> 3759169fad49fe1d8194c77d64624a8359a26b66
 
 <script>
 	document.querySelector('.btn-delete').addEventListener('click', () => {

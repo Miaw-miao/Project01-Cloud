@@ -19,6 +19,10 @@ let getEditBlogPage = async (req, res) => {
             return res.status(404).send("Blog not found");
         }
 
+        if (blog.author !== user.id) {
+            return res.status(403).send("You are not authorized to edit this blog");
+        }
+
         return res.render('add-blog.ejs', { blog, user });
     } catch (err) {
         console.error(err);
@@ -141,6 +145,7 @@ let editBlogById = async (req, res) => {
 
         try {
             const updatedRows = await db.Blog.update(blogData, { where: { id } });
+            console.log(updatedRows);
 
             if (updatedRows[0] === 0) {
                 return res.status(404).json({ message: 'Blog not found!' });
@@ -148,6 +153,8 @@ let editBlogById = async (req, res) => {
 
             return res.status(200).json({
                 message: 'Blog updated successfully!',
+                blog: blogData,
+                redirectUrl: `/blog-single?id=${id}`, // Chuyển hướng frontend
                 redirectUrl: `/blog-single?id=${id}`,
             });
         } catch (err) {
