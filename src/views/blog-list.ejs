@@ -106,22 +106,21 @@
 						<div class="blog-post padding-bottom-20">
 							<!-- Blog Item Header -->
 							<div class="blog-item-header">
-								<!-- Date -->
+							<div class="blog-post-date-wrapper d-flex">
 								<div class="blog-post-date pull-left">
 									<span class="day"><%= new Date(blog.created_date).getDate() %></span>
 									<span class="month"><%= new Date(blog.created_date).toLocaleString('en-US', { month: 'short' }) %></span>
 								</div>
-								<!-- End Date -->
-						
-								<!-- Title -->
-								<h2>
+								<div class="blog-post-year pull-left">
+									<span class="year"><%= new Date(blog.created_date).getFullYear() %></span>
+								</div>
+								<h2 class="blog-title ms-3">
 									<a href="/blog-single?id=<%= blog.id %>">
 										<%= blog.title %>
 									</a>
 								</h2>
-								<div class="clearfix"></div>
-								<!-- End Title -->
 							</div>
+						</div>
 							<!-- End Blog Item Header -->
 						
 							<!-- Blog Item Details -->
