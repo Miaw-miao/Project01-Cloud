@@ -1371,6 +1371,11 @@ i.fa.center {
   -moz-transition: -moz-transform 0.4s;
   transition: transform 0.4s;
 }
+.image-hover .thumb-img{
+  width: 231.06px;
+  height: 150px;
+  object-fit: cover;
+}
 .image-hover figure .overlay {
   display: block;
   position: absolute;
