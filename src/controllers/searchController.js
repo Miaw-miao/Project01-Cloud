@@ -6,7 +6,6 @@ let getSearchPage = async (req, res) => {
     return res.render('search.ejs');
 }
 
-
 let searchBlog = async (req, res) => {
     let searchTerm = req.query.searchTerm;
     let date = req.query.date;
@@ -72,9 +71,6 @@ let searchBlog = async (req, res) => {
         return res.status(500).send("Có lỗi xảy ra trong quá trình tìm kiếm");
     }
 };
-
-
-
 
 module.exports = {
     getSearchPage: getSearchPage,

@@ -4,14 +4,19 @@ import crud from "../services/CRUDService";
 let getBlogSinglePage = async (req, res) => {
     try {
         let blogId = req.query.id;
-
         let blog = await crud.getBlogById(blogId);
 
         if (!blog) {
             return res.status(404).send('Blog not found');
         }
 
-        return res.render('blog-single.ejs', { blog: blog });
+        const user = req.session.user;
+
+        // TRUYỀN user vào render
+        return res.render('blog-single.ejs', {
+            blog,
+            user
+        });
     } catch (err) {
         console.error(err);
         return res.status(500).send('Server error');

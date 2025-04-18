@@ -45,10 +45,18 @@
 						<li><a href="/index">Home</a></li>
 						<li><a href="/search">Search</a></li>
 						<li><a href="/blog-list">Blog</a></li>
-						<li><span>Manage Account</span>
-							<ul>
-								<li><a href="/login">Log Out</a></li>
-							</ul>
+						<li>
+							<% if (user) { %> 
+								<span>Hello <strong><%= user.username %></strong> <span class="triangle-down"></span></span>  <!-- Hiển thị tên người dùng nếu đã đăng nhập -->
+								<ul>
+									<li><a href="/login">Log Out</a></li>  <!-- Link đăng xuất -->
+								</ul>
+							<% } else { %> 
+								<span>Manage Account</span>  <!-- Giữ nguyên nếu chưa đăng nhập -->
+								<ul>
+									<li><a href="/login">Log In</a></li>
+								</ul>
+							<% } %>
 						</li>
 					</ul>				</div>
 				</div>
@@ -67,19 +75,21 @@
 							<li class="portfolio-filter-label label label-primary">
 								filter by:
 							</li>
-							<li class="dropdown">
-								<button class="btn btn-default dropdown-toggle" type="button" id="post-date-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100px;">
-									<%= isNewest ? 'Latest' : 'Oldest' %> <span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu" aria-labelledby="post-date-dropdown">
-									<li><a href="#" type="button" class="btn btn-default" data-sort="latest">Latest</a></li>
-									<li><a href="#" type="button" class="btn btn-default" data-sort="oldest">Oldest</a></li>
-								</ul>
+							<li>
+								<a href="#"
+								   class="btn btn-default <%= isNewest ? 'active' : '' %>"
+								   data-sort="latest">Latest</a>
 							</li>
 							<li>
+								<a href="#"
+								   class="btn btn-default <%= !isNewest ? 'active' : '' %>"
+								   data-sort="oldest">Oldest</a>
+							</li>																										
+							
+							<!-- <li>
 								<a href="#" class="portfolio-selected btn btn-default" data-filter="*">All</a>
 							</li>
-							<!-- <li>
+							<li>
 								<a href="#" class="btn btn-default" data-filter=".code">Coding</a>
 							</li> -->
 						</ul>
@@ -151,17 +161,6 @@
 						<% }) %>
 						
 					<!-- End Blog Item -->
-					<!-- Pagination -->
-					<ul class="pagination">
-						<li><a href="#">&laquo;</a></li>
-						<li class="active"><a href="#">1</a></li>
-						<li class="disabled"><a href="#">2</a></li>
-						<li class="disabled"><a href="#">3</a></li>
-						<li class="disabled"><a href="#">4</a></li>
-						<li class="disabled"><a href="#">5</a></li>
-						<li class="disabled"><a href="#">&raquo;</a></li>
-					</ul>
-					<!-- End Pagination -->
 				</div>
 				<!-- End Main Column -->
 				<!-- Side Column -->
@@ -303,9 +302,15 @@
 			</div>
 
 			<!-- AddButton -->
-			<a href="/add-blog" title="Add Blog">
+			<!-- <a href="/add-blog" title="Add Blog">
 				<button class="floating-btn">+</button>
-			</a>
+			</a> -->
+			<!-- Hiển thị nút Add Blog nếu user là admin -->
+			<% if (user && user.role === 'Admin') { %>
+				<a href="/add-blog" title="Add Blog">
+					<button class="floating-btn">+</button>
+				</a>
+			<% } %>			
 
 			<!-- Footer Menu -->
 			<div id="footer">
@@ -339,7 +344,7 @@
 <!-- === END FOOTER === -->
 
 <script>
-	document.querySelectorAll('.dropdown-menu a[data-sort]').forEach(item => {
+	document.querySelectorAll('a[data-sort]').forEach(item => {
 		item.addEventListener('click', function (e) {
 			e.preventDefault();
 
@@ -350,6 +355,4 @@
 			window.location.href = `/blog-list?isNewest=${isNewest}`;
 		});
 	});
-
-	
 </script>

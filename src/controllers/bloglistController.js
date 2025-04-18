@@ -2,15 +2,20 @@ import db from '../models/index'
 import crud from "../services/CRUDService";
 
 let getBlogListPage = async (req, res) => {
-    let isNewest = req.query.isNewest === 'true';
+    let isNewest = req.query.isNewest === undefined || req.query.isNewest === 'true';
+
     try {
         let blogs = await crud.getAllBlogs(isNewest);
-        let recentPosts = await crud.getAllBlogs(true, 4); // lấy 4 bài viết gần đây nhất
+        let recentPosts = await crud.getAllBlogs(true, 4);
+
+        // Lấy user trực tiếp từ session
+        const user = req.session.user;
 
         return res.render('blog-list.ejs', {
             blogs,
             isNewest,
-            recentPosts // truyền biến này xuống view
+            recentPosts,
+            user
         });
     } catch (err) {
         console.error(err);
