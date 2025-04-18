@@ -8,6 +8,8 @@ var _multer = _interopRequireDefault(require("multer"));
 
 var _path = _interopRequireDefault(require("path"));
 
+var _fs = _interopRequireDefault(require("fs"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var getEditBlogPage = function getEditBlogPage(req, res) {
@@ -81,7 +83,46 @@ var storage = _multer["default"].diskStorage({
 
 var upload = (0, _multer["default"])({
   storage: storage
-}).single('image');
+}).single('image'); // let editBlogById = async (req, res) => {
+//     upload(req, res, async (err) => {
+//         if (err) {
+//             console.error(err);
+//             return res.status(500).json({ message: 'Error uploading image.' });
+//         }
+//         console.log('req.body:', req.body);
+//         console.log('req.file:', req.file);
+//         const { id, title, description, content } = req.body;
+//         // Kiểm tra dữ liệu
+//         if (!id || !title || !description || !content) {
+//             return res.status(400).json({ message: 'All fields are required!' });
+//         }
+//         // Cập nhật thông tin blog
+//         const blogData = {
+//             title,
+//             description,
+//             content,
+//             last_modified_date: new Date(),
+//         };
+//         // Nếu có ảnh mới được upload
+//         if (req.file) {
+//             blogData.imageUrl = `/uploads/${req.file.filename}`;
+//         }
+//         try {
+//             // Cập nhật blog trong cơ sở dữ liệu
+//             const updatedRows = await db.Blog.update(blogData, { where: { id } });
+//             if (updatedRows[0] === 0) {
+//                 return res.status(404).json({ message: 'Blog not found!' });
+//             }
+//             return res.status(200).json({
+//                 message: 'Blog updated successfully!',
+//                 redirectUrl: `/blog-single?id=${id}`, // Chuyển hướng frontend
+//             });
+//         } catch (err) {
+//             console.error('Error updating blog:', err);
+//             return res.status(500).json({ message: 'Error updating blog' });
+//         }
+//     });
+// };
 
 var editBlogById = function editBlogById(req, res) {
   return regeneratorRuntime.async(function editBlogById$(_context3) {
@@ -89,7 +130,7 @@ var editBlogById = function editBlogById(req, res) {
       switch (_context3.prev = _context3.next) {
         case 0:
           upload(req, res, function _callee(err) {
-            var _req$body, id, title, description, content, blogData, updatedRows;
+            var _req$body, id, title, description, content, oldBlog, blogData, imageName, oldImagePath, updatedRows;
 
             return regeneratorRuntime.async(function _callee$(_context2) {
               while (1) {
@@ -106,12 +147,10 @@ var editBlogById = function editBlogById(req, res) {
                     }));
 
                   case 3:
-                    console.log('req.body:', req.body);
-                    console.log('req.file:', req.file);
-                    _req$body = req.body, id = _req$body.id, title = _req$body.title, description = _req$body.description, content = _req$body.content; // Kiểm tra dữ liệu
+                    _req$body = req.body, id = _req$body.id, title = _req$body.title, description = _req$body.description, content = _req$body.content;
 
                     if (!(!id || !title || !description || !content)) {
-                      _context2.next = 8;
+                      _context2.next = 6;
                       break;
                     }
 
@@ -119,32 +158,20 @@ var editBlogById = function editBlogById(req, res) {
                       message: 'All fields are required!'
                     }));
 
-                  case 8:
-                    // Cập nhật thông tin blog
-                    blogData = {
-                      title: title,
-                      description: description,
-                      content: content,
-                      last_modified_date: new Date()
-                    }; // Nếu có ảnh mới được upload
-
-                    if (req.file) {
-                      blogData.imageUrl = "/uploads/".concat(req.file.filename);
-                    }
-
-                    _context2.prev = 10;
-                    _context2.next = 13;
-                    return regeneratorRuntime.awrap(_index["default"].Blog.update(blogData, {
+                  case 6:
+                    _context2.prev = 6;
+                    _context2.next = 9;
+                    return regeneratorRuntime.awrap(_index["default"].Blog.findOne({
                       where: {
                         id: id
                       }
                     }));
 
-                  case 13:
-                    updatedRows = _context2.sent;
+                  case 9:
+                    oldBlog = _context2.sent;
 
-                    if (!(updatedRows[0] === 0)) {
-                      _context2.next = 16;
+                    if (oldBlog) {
+                      _context2.next = 12;
                       break;
                     }
 
@@ -152,27 +179,85 @@ var editBlogById = function editBlogById(req, res) {
                       message: 'Blog not found!'
                     }));
 
-                  case 16:
-                    return _context2.abrupt("return", res.status(200).json({
-                      message: 'Blog updated successfully!',
-                      redirectUrl: "/blog-single?id=".concat(id) // Chuyển hướng frontend
+                  case 12:
+                    _context2.next = 18;
+                    break;
 
+                  case 14:
+                    _context2.prev = 14;
+                    _context2.t0 = _context2["catch"](6);
+                    console.error('Error fetching blog:', _context2.t0);
+                    return _context2.abrupt("return", res.status(500).json({
+                      message: 'Error fetching blog'
                     }));
 
-                  case 19:
-                    _context2.prev = 19;
-                    _context2.t0 = _context2["catch"](10);
-                    console.error('Error updating blog:', _context2.t0);
+                  case 18:
+                    // Tạo object chứa dữ liệu cần cập nhật
+                    blogData = {
+                      title: title,
+                      description: description,
+                      content: content,
+                      last_modified_date: new Date()
+                    }; // Nếu có ảnh mới thì xóa ảnh cũ và cập nhật đường dẫn mới
+
+                    if (req.file) {
+                      imageName = _path["default"].basename(oldBlog.imageUrl); // lấy tên file
+
+                      oldImagePath = _path["default"].join(__dirname, '..', 'public', 'uploads', imageName);
+
+                      if (_fs["default"].existsSync(oldImagePath)) {
+                        _fs["default"].unlink(oldImagePath, function (err) {
+                          if (err) {
+                            console.error('Error can not delete image:', err);
+                          } else {
+                            console.log('Old image had been deleted:', imageName);
+                          }
+                        });
+                      }
+
+                      blogData.imageUrl = "/uploads/".concat(req.file.filename);
+                    }
+
+                    _context2.prev = 20;
+                    _context2.next = 23;
+                    return regeneratorRuntime.awrap(_index["default"].Blog.update(blogData, {
+                      where: {
+                        id: id
+                      }
+                    }));
+
+                  case 23:
+                    updatedRows = _context2.sent;
+
+                    if (!(updatedRows[0] === 0)) {
+                      _context2.next = 26;
+                      break;
+                    }
+
+                    return _context2.abrupt("return", res.status(404).json({
+                      message: 'Blog not found!'
+                    }));
+
+                  case 26:
+                    return _context2.abrupt("return", res.status(200).json({
+                      message: 'Blog updated successfully!',
+                      redirectUrl: "/blog-single?id=".concat(id)
+                    }));
+
+                  case 29:
+                    _context2.prev = 29;
+                    _context2.t1 = _context2["catch"](20);
+                    console.error('Error updating blog:', _context2.t1);
                     return _context2.abrupt("return", res.status(500).json({
                       message: 'Error updating blog'
                     }));
 
-                  case 23:
+                  case 33:
                   case "end":
                     return _context2.stop();
                 }
               }
-            }, null, null, [[10, 19]]);
+            }, null, null, [[6, 14], [20, 29]]);
           });
 
         case 1:

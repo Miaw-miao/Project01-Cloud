@@ -143,7 +143,7 @@
 								<div class="clearfix"></div>
 								<div class="blog-post-body row margin-top-15">
 									<div class="col-md-5">
-										<img class="pull-left" src="/img/blog/image1.jpg" alt="thumb1">
+										<img class="pull-left" src="<%= blog.imageUrl ? blog.imageUrl : '/img/blog/image1.jpg' %>" alt="thumb1">
 									</div>
 									<div class="col-md-7">
 										<p><%= blog.description %></p>
@@ -172,7 +172,7 @@
 							<% recentPosts.forEach(function(post) { %>
 							  	<li>
 									<div class="recent-post d-flex align-items-center">
-										<img src="<%= post.image || '/img/blog/thumbs/thumb1.jpg' %>" alt="thumb" class="post-thumb me-3">
+										<img src="<%= post.imageUrl ? post.imageUrl : '/img/blog/thumbs/thumb1.jpg' %>" alt="thumb" class="post-thumb me-3">
 										<div class="post-text">
 											<a href="/blog-single?id=<%= post.id %>" class="posts-list-title">
 												<%= post.title || 'No Title' %>

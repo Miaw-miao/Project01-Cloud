@@ -89,8 +89,8 @@ module.exports = {
             }, {
               title: 'Tai nghe quốc dân Soundcore R50i NC !!!',
               author: 1,
-              description: 'Review chiếc tai nghe ngon, bổ, rẻ nhất nhì trong tầm giá dưới 400k nhà Anker! Bản nâng cấp của R50i nhé mn.',
-              content: 'Soundcore R50i NC là một lựa chọn rất đáng cân nhắc cho những ai đang tìm kiếm một chiếc tai nghe không dây giá rẻ nhưng chất lượng tốt, có chống ồn, pin trâu, âm thanh mạnh mẽ, đặc biệt còn có chống nước nữa nha! Rất phù hợp với sinh viên, người hay di chuyển hoặc cần tai nghe để làm việc từ xa.\nĐặc biệt tai nghe này còn có app Soundcore hỗ trợ viêc điều chỉnh EQ theo ý thích, tuy nhiên em này có bass rất nặng đô nên ai không thích phong cách nhạc quẩy EDM thì nên cân nhắc nhé. Hộp sạc em này còn được thiết kế để làm giá đỡ diện thoại nữa đó nha!\nLưu ý!!! Tai nghe này giá khoảng 400-500k nhưng có thể săn được với giá chỉ từ 250k bằng cách săn sale và áp max xu bên sàn Lazada nhé',
+              description: 'Review chiếc tai nghe ngon nhất nhì trong tầm giá dưới 400k nhà Anker!',
+              content: 'Em này là bản nâng cấp của R50i nhé mn.\n Soundcore R50i NC là một lựa chọn rất đáng cân nhắc cho những ai đang tìm kiếm một chiếc tai nghe không dây giá rẻ nhưng chất lượng tốt, có chống ồn, pin trâu, âm thanh mạnh mẽ, đặc biệt còn có chống nước nữa nha! Rất phù hợp với sinh viên, người hay di chuyển hoặc cần tai nghe để làm việc từ xa.\nĐặc biệt tai nghe này còn có app Soundcore hỗ trợ viêc điều chỉnh EQ theo ý thích, tuy nhiên em này có bass rất nặng đô nên ai không thích phong cách nhạc quẩy EDM thì nên cân nhắc nhé. Hộp sạc em này còn được thiết kế để làm giá đỡ diện thoại nữa đó nha!\nLưu ý!!! Tai nghe này giá khoảng 400-500k nhưng có thể săn được với giá chỉ từ 250k bằng cách săn sale và áp max xu bên sàn Lazada nhé',
               created_date: new Date(),
               last_modified_date: new Date(),
               like_number: 104,
@@ -100,7 +100,7 @@ module.exports = {
             }, {
               title: 'Bowie WM01 Baseus!!!',
               author: 1,
-              description: '.',
+              description: 'Em tai nghe đời cũ nhà Baseus.',
               content: 'Hàng chính hãng nên có ưu điểm là yên tâm khi mua trên sàn Cam hoặc Lazada, bảo hành thì hên xui nhma khả năng cao là hãng sẽ liên hệ cho đổi trả khi mới mua về bị hư. Thì trang mình nói vể các em phân khúc thấp nên em nào cũng sẽ gặp nhiều lỗi vặt nhưng thường sẽ không quá nghiêm trọng, vẫn có thể sử dụng được.\nThiết kế nhỏ gọn, nhựa 99,99% nhìn phèn :)) Bluetooth 5.0, pin tẩm 4 tiếng là cao nha, có núm tai, không có ANC đâu nha (giá này đào đâu ra mà có :)))). Không chống nước luôn nhé, âm sắc nghe được, còn để thẩm nhạc thì quẹo ngay sang em khác đi :)).',
               created_date: new Date(),
               last_modified_date: new Date(),
