@@ -328,23 +328,29 @@
 <!-- === END FOOTER === -->
 
 <script>
-	document.querySelector('.btn-delete').addEventListener('click', () => {
-		const blogId = '<%= blog.id %>';
-		if (confirm('Are you sure you want to delete this blog?')) {
-		fetch(`/blog/${blogId}`, {
-			method: 'DELETE'
-		})
-		.then(res => res.json())
-		.then(data => {
-			alert(data.message || "Delete successfully.");
-			window.location.href = '/blog-list';
-		})
-		.catch(err => {
-			alert("Delete failed!");
-			console.error(err);
-		});
+	document.addEventListener('DOMContentLoaded', () => {
+		const deleteButton = document.querySelector('.btn-delete');
+
+		if (deleteButton) {
+			deleteButton.addEventListener('click', () => {
+				const blogId = '<%= blog.id %>';
+				if (confirm('Are you sure you want to delete this blog?')) {
+					fetch(`/blog/${blogId}`, {
+						method: 'DELETE'
+					})
+						.then(res => res.json())
+						.then(data => {
+							alert(data.message || 'Delete successfully.');
+							window.location.href = '/blog-list';
+						})
+						.catch(err => {
+							alert('Delete failed!');
+							console.error(err);
+						});
+				}
+			});
 		}
-	});
+    });
 
     document.querySelectorAll('.btn-edit').forEach(button => {
         button.addEventListener('click', () => {

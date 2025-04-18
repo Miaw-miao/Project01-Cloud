@@ -8,14 +8,13 @@ var _viewEngine = _interopRequireDefault(require("./config/viewEngine"));
 
 var _web = _interopRequireDefault(require("./route/web"));
 
-var _connectDB = _interopRequireDefault(require("./config/connectDB"));
-
 var _expressSession = _interopRequireDefault(require("express-session"));
 
 var _path = _interopRequireDefault(require("path"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
+//import connectDB from "./config/connectDB";
 require('dotenv').config();
 
 var app = (0, _express["default"])();
@@ -40,8 +39,8 @@ app.use(function (req, res, next) {
   next();
 });
 (0, _viewEngine["default"])(app);
-(0, _web["default"])(app);
-(0, _connectDB["default"])();
+(0, _web["default"])(app); //connectDB();
+
 var port = process.env.PORT || 6969;
 app.listen(port, function () {
   console.log("Backend Nodejs is running on the port: " + port);

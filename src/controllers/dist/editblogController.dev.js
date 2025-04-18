@@ -211,19 +211,22 @@ var editBlogById = function editBlogById(req, res) {
                     }; // Nếu có ảnh mới thì xóa ảnh cũ và cập nhật đường dẫn mới
 
                     if (req.file) {
-                      imageName = _path["default"].basename(oldBlog.imageUrl); // lấy tên file
+                      if (oldBlog.imageUrl) {
+                        imageName = _path["default"].basename(oldBlog.imageUrl); // lấy tên file
 
-                      oldImagePath = _path["default"].join(__dirname, '..', 'public', 'uploads', imageName);
+                        oldImagePath = _path["default"].join(__dirname, '..', 'public', 'uploads', imageName);
 
-                      if (_fs["default"].existsSync(oldImagePath)) {
-                        _fs["default"].unlink(oldImagePath, function (err) {
-                          if (err) {
-                            console.error('Error can not delete image:', err);
-                          } else {
-                            console.log('Old image had been deleted:', imageName);
-                          }
-                        });
-                      }
+                        if (_fs["default"].existsSync(oldImagePath)) {
+                          _fs["default"].unlink(oldImagePath, function (err) {
+                            if (err) {
+                              console.error('Error cannot delete image:', err);
+                            } else {
+                              console.log('Old image has been deleted:', imageName);
+                            }
+                          });
+                        }
+                      } // Cập nhật ảnh mới
+
 
                       blogData.imageUrl = "/uploads/".concat(req.file.filename);
                     }
