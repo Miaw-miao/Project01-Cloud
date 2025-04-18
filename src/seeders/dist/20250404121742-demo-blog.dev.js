@@ -50,7 +50,7 @@ module.exports = {
               created_date: new Date(),
               last_modified_date: new Date(),
               like_number: 23,
-              imageUrl: null,
+              imageUrl: '/uploads/image4.jpg',
               createdAt: new Date(),
               updatedAt: new Date()
             }, {
@@ -61,7 +61,7 @@ module.exports = {
               created_date: new Date(),
               last_modified_date: new Date(),
               like_number: 39,
-              imageUrl: null,
+              imageUrl: '/uploads/image5.jpg',
               createdAt: new Date(),
               updatedAt: new Date()
             }, {
@@ -72,7 +72,7 @@ module.exports = {
               created_date: new Date(),
               last_modified_date: new Date(),
               like_number: 56,
-              imageUrl: null,
+              imageUrl: '/uploads/image6.jpg',
               createdAt: new Date(),
               updatedAt: new Date()
             }, {
@@ -83,7 +83,7 @@ module.exports = {
               created_date: new Date(),
               last_modified_date: new Date(),
               like_number: 93,
-              imageUrl: null,
+              imageUrl: '/uploads/image7.jpg',
               createdAt: new Date(),
               updatedAt: new Date()
             }, {
@@ -94,7 +94,7 @@ module.exports = {
               created_date: new Date(),
               last_modified_date: new Date(),
               like_number: 104,
-              imageUrl: null,
+              imageUrl: '/uploads/image8.jpg',
               createdAt: new Date(),
               updatedAt: new Date()
             }, {
@@ -105,7 +105,7 @@ module.exports = {
               created_date: new Date(),
               last_modified_date: new Date(),
               like_number: 82,
-              imageUrl: null,
+              imageUrl: '/uploads/image9.jpg',
               createdAt: new Date(),
               updatedAt: new Date()
             }, {
@@ -116,7 +116,7 @@ module.exports = {
               created_date: new Date(),
               last_modified_date: new Date(),
               like_number: 134,
-              imageUrl: null,
+              imageUrl: '/uploads/image10.jpg',
               createdAt: new Date(),
               updatedAt: new Date()
             }], {}));
