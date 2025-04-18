@@ -11,27 +11,30 @@ var _path = _interopRequireDefault(require("path"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var getAddBlogPage = function getAddBlogPage(req, res) {
+  var user;
   return regeneratorRuntime.async(function getAddBlogPage$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
           _context.prev = 0;
+          user = req.session.user || null;
           return _context.abrupt("return", res.render('add-blog.ejs', {
-            blog: null
+            blog: null,
+            user: user
           }));
 
-        case 4:
-          _context.prev = 4;
+        case 5:
+          _context.prev = 5;
           _context.t0 = _context["catch"](0);
           console.error(_context.t0);
           return _context.abrupt("return", res.status(500).send("Error loading blogs"));
 
-        case 8:
+        case 9:
         case "end":
           return _context.stop();
       }
     }
-  }, null, null, [[0, 4]]);
+  }, null, null, [[0, 5]]);
 };
 
 var storage = _multer["default"].diskStorage({

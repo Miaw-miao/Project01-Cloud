@@ -11,56 +11,58 @@ var _path = _interopRequireDefault(require("path"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var getEditBlogPage = function getEditBlogPage(req, res) {
-  var blogId, blog;
+  var blogId, user, blog;
   return regeneratorRuntime.async(function getEditBlogPage$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
           _context.prev = 0;
           blogId = req.query.id;
+          user = req.session.user || null;
 
           if (blogId) {
-            _context.next = 4;
+            _context.next = 5;
             break;
           }
 
           return _context.abrupt("return", res.status(400).send("Blog ID is required"));
 
-        case 4:
-          _context.next = 6;
+        case 5:
+          _context.next = 7;
           return regeneratorRuntime.awrap(_index["default"].Blog.findOne({
             where: {
               id: blogId
             }
           }));
 
-        case 6:
+        case 7:
           blog = _context.sent;
 
           if (blog) {
-            _context.next = 9;
+            _context.next = 10;
             break;
           }
 
           return _context.abrupt("return", res.status(404).send("Blog not found"));
 
-        case 9:
+        case 10:
           return _context.abrupt("return", res.render('add-blog.ejs', {
-            blog: blog
+            blog: blog,
+            user: user
           }));
 
-        case 12:
-          _context.prev = 12;
+        case 13:
+          _context.prev = 13;
           _context.t0 = _context["catch"](0);
           console.error(_context.t0);
           return _context.abrupt("return", res.status(500).send("Error loading blogs"));
 
-        case 16:
+        case 17:
         case "end":
           return _context.stop();
       }
     }
-  }, null, null, [[0, 12]]);
+  }, null, null, [[0, 13]]);
 };
 
 var storage = _multer["default"].diskStorage({

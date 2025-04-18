@@ -5,7 +5,8 @@ import path from 'path';
 
 let getAddBlogPage = async (req, res) => {
     try {
-        return res.render('add-blog.ejs', { blog: null });
+        const user = req.session.user || null;
+        return res.render('add-blog.ejs', { blog: null, user });
     } catch (err) {
         console.error(err);
         return res.status(500).send("Error loading blogs");
