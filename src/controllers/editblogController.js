@@ -6,6 +6,7 @@ import path from 'path';
 let getEditBlogPage = async (req, res) => {
     try {
         const blogId = req.query.id;
+        const user = req.session.user || null;
 
         if (!blogId) {
             return res.status(400).send("Blog ID is required");
@@ -17,7 +18,7 @@ let getEditBlogPage = async (req, res) => {
             return res.status(404).send("Blog not found");
         }
 
-        return res.render('add-blog.ejs', { blog });
+        return res.render('add-blog.ejs', { blog, user });
     } catch (err) {
         console.error(err);
         return res.status(500).send("Error loading blogs");
