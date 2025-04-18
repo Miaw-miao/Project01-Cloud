@@ -86,13 +86,13 @@ var searchBlog = function searchBlog(req, res) {
 
         case 10:
           blogs = _context2.sent;
+          user = req.session.user || null;
 
           if (!(blogs.length === 0)) {
             _context2.next = 14;
             break;
           }
 
-          user = req.session.user || null;
           return _context2.abrupt("return", res.render('pages-404.ejs', {
             user: user
           }));
@@ -108,7 +108,8 @@ var searchBlog = function searchBlog(req, res) {
           return _context2.abrupt("return", res.render('blog-list.ejs', {
             blogs: blogs,
             isNewest: isNewest,
-            recentPosts: recentPosts
+            recentPosts: recentPosts,
+            user: user
           }));
 
         case 21:

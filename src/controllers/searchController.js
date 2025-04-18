@@ -52,8 +52,9 @@ let searchBlog = async (req, res) => {
             ]
         });
 
+        const user = req.session.user || null; 
+        
         if (blogs.length === 0) {
-            const user = req.session.user || null; 
             return res.render('pages-404.ejs', { user });
         }
 
@@ -65,7 +66,8 @@ let searchBlog = async (req, res) => {
         return res.render('blog-list.ejs', {
             blogs: blogs,
             isNewest: isNewest,
-            recentPosts: recentPosts
+            recentPosts: recentPosts,
+            user
         });
 
     } catch (error) {
