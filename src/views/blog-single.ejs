@@ -73,11 +73,16 @@
 					<div class="blog-post">
 						<div class="blog-item-header">
 							<div class="blog-post-date pull-left">
-								<span class="day"><%= new Date(blog.createdAt).getDate() %></span>
-								<span class="month"><%= new Date(blog.createdAt).toLocaleString('en-US', { month: 'short' }) %></span>
+								<span class="day"><%= new Date(blog.created_date).getDate() %></span>
+								<span class="month"><%= new Date(blog.created_date).toLocaleString('en-US', { month: 'short' }) %></span>
 							</div>
-							<h2>
-								<a href="#"><%= blog.title %></a>
+							<div class="blog-post-year pull-left" style="margin-right: 20px;">
+								<span class="year"><%= new Date(blog.created_date).getFullYear() %></span>
+							</div>
+							<h2 class="blog-title ms-3">
+								<a href="/blog-single?id=<%= blog.id %>">
+									<%= blog.title %>
+								</a>
 							</h2>
 						</div>
 				  
@@ -98,9 +103,15 @@
 						<div class="blog-item">
 							<div class="clearfix"></div>
 							<div class="blog-post-body row margin-top-15">
-						  		<div class="col-md-12">
-									<img class="pull-left" src="<%= blog.imageUrl ? blog.imageUrl : '/img/blog/image1.jpg' %>" alt="image">
-						  		</div>
+								<% if (blog.imageUrl) { %>
+									<div class="col-md-12">
+										<img class="pull-left" src="<%= blog.imageUrl %>" alt="blog image" style="max-width: 100%; height: auto;">
+									</div>
+								<% } else { %>
+									<div class="col-md-12">
+										<img class="pull-left" src="/img/blog/image1.jpg" alt="default image" style="max-width: 100%; height: auto;">
+									</div>
+								<% } %>								
 							</div>
 							<div class="blog-post-body row margin-top-15">
 								<div class="col-md-12" style="margin-top: 15px;">

@@ -106,7 +106,6 @@
 						<div class="blog-post padding-bottom-20">
 							<!-- Blog Item Header -->
 							<div class="blog-item-header">
-							<div class="blog-post-date-wrapper d-flex">
 								<div class="blog-post-date pull-left">
 									<span class="day"><%= new Date(blog.created_date).getDate() %></span>
 									<span class="month"><%= new Date(blog.created_date).toLocaleString('en-US', { month: 'short' }) %></span>
@@ -120,7 +119,6 @@
 									</a>
 								</h2>
 							</div>
-						</div>
 							<!-- End Blog Item Header -->
 						
 							<!-- Blog Item Details -->
@@ -155,9 +153,9 @@
 								</div>
 							</div>
 							<!-- End Blog Item Body -->
+							<!-- End Blog Item -->						
 						</div>
-						<!-- End Blog Item -->
-						<% }) %>
+					<% }) %>
 						
 					<!-- End Blog Item -->
 				</div>

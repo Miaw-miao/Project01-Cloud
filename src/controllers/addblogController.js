@@ -34,7 +34,7 @@ let addBlog = async (req, res) => {
         }
 
         const { title, description, content, imageDescription } = req.body;
-        const imageUrl = req.file ? `/uploads/${req.file.filename}` : null; // Lấy đường dẫn hình ảnh
+        const imageUrl = req.file ? `/uploads/${req.file.filename}` : null;
 
         try {
             const blogData = {
@@ -43,22 +43,26 @@ let addBlog = async (req, res) => {
                 content,
                 imageUrl,
                 imageDescription,
-                author: req.session.user.id, // Giả sử đã có thông tin user
+                author: req.session.user.id,
                 created_date: new Date(),
                 last_modified_date: new Date(),
                 like_number: 0
             };
 
             // Gọi hàm tạo blog
-            await crud.createNewCRUD(blogData);
-            return res.status(200).json({ message: 'Create a new blog succeed!' });
+            const newBlog = await db.Blog.create(blogData);
+
+            return res.status(200).json({
+                message: 'Create a new blog succeed!',
+                blog: newBlog,
+                redirectUrl: `/blog-single?id=${newBlog.id}` // ✅ Chuyển hướng về trang chi tiết
+            });
         } catch (e) {
             console.error(e);
             return res.status(500).json({ message: 'Error creating blog.' });
         }
     });
 };
-
 
 module.exports = {
     getAddBlogPage: getAddBlogPage,

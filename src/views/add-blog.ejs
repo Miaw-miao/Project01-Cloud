@@ -348,8 +348,8 @@
 
 			const data = await response.json();
 			if (data.message) {
-				alert(data.message || (actionUrl.includes('/add-blog') ? 'Add blog successfully!' : 'Edit blog successfully!'));
-				window.location.href = '/blog-list'; // Chuyển hướng tới danh sách blog
+				alert(data.message || 'Add blog successfully!');
+				window.location.href = data.redirectUrl || '/blog-list'; // Ưu tiên redirect về bài mới tạo
 			} else {
 				alert('Something went wrong!');
 			}
