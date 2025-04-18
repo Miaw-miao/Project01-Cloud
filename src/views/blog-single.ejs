@@ -45,7 +45,11 @@
 						<li><a href="/index">Home</a></li>
 						<li><a href="/search">Search</a></li>
 						<li><a href="/blog-list">Blog</a></li>
-						<li><a href="/contact">Contact</a></li>
+						<li><span>Manage Account</span>
+							<ul>
+								<li><a href="/login">Log Out</a></li>
+							</ul>
+						</li>
 					</ul>				</div>
 				</div>
 				<div class="clear"></div>
@@ -110,7 +114,7 @@
 							<div class="blog-item-footer">
 								<div class="blog-author panel panel-default margin-bottom-30">
 									<div class="panel-heading">
-										<h3>About the Author</h3>
+										<h3>About Us</h3>
 									</div>
 									<div class="panel-body">
 										<div class="row author-info">
@@ -137,15 +141,16 @@
 							</div>
 						</div>							
 
-						<!-- Main Button -->
-						<button class="floating-btn" id="toggleBtn" onclick="toggleMenu()">+</button>
-
+						<% if (user && user.role === 'Admin') { %>
+							<!-- Main Button -->
+							<button class="floating-btn" id="toggleBtn" onclick="toggleMenu()">+</button>
+						
 							<!-- List Button -->
 							<div class="floating-menu" id="menu">
 								<button class="btn1 btn-edit" title="Edit Blog">Edit</button>
 								<button class="btn1 btn-delete" title="Delete Blog">Delete</button>
 							</div>
-						</div>
+						<% } %>
 					</div>
 				</div>
 				<!-- End Blog Post -->

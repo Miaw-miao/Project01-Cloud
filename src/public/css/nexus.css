@@ -730,6 +730,10 @@ h1.logo-text a {
   display: inline-block;
   font-family: FontAwesome;
 }
+.btn.active {
+  background-color: #2a2a2a;
+  color: white;
+}
 /*-----------------------------------------------------------------------------------*/
 /* Sidebar Menu */
 /*-----------------------------------------------------------------------------------*/
@@ -2854,3 +2858,14 @@ ul.posts-list li {
   margin-top: 15px;
 }
 /* End Add blog */
+
+/* Menu */
+.triangle-down {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #000;  /* Màu của tam giác */
+  margin-left: 5px;  /* Khoảng cách giữa tên người dùng và tam giác */
+}

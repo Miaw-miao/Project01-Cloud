@@ -3,10 +3,9 @@ const { Op } = require('sequelize');
 import crud from "../services/CRUDService";
 
 let getSearchPage = async (req, res) => {
-    console.log("Request User:", req.user);
-    return res.render('search.ejs');
+    const user = req.session.user || null;
+    return res.render('search.ejs', { user });
 }
-
 
 let searchBlog = async (req, res) => {
     let searchTerm = req.query.searchTerm;
@@ -54,7 +53,8 @@ let searchBlog = async (req, res) => {
         });
 
         if (blogs.length === 0) {
-            return res.render('pages-404.ejs');
+            const user = req.session.user || null; 
+            return res.render('pages-404.ejs', { user });
         }
 
         // Xác định giá trị isNewest
@@ -73,9 +73,6 @@ let searchBlog = async (req, res) => {
         return res.status(500).send("Có lỗi xảy ra trong quá trình tìm kiếm");
     }
 };
-
-
-
 
 module.exports = {
     getSearchPage: getSearchPage,

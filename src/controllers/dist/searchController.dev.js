@@ -12,12 +12,15 @@ var _require = require('sequelize'),
     Op = _require.Op;
 
 var getSearchPage = function getSearchPage(req, res) {
+  var user;
   return regeneratorRuntime.async(function getSearchPage$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
-          console.log("Request User:", req.user);
-          return _context.abrupt("return", res.render('search.ejs'));
+          user = req.session.user || null;
+          return _context.abrupt("return", res.render('search.ejs', {
+            user: user
+          }));
 
         case 2:
         case "end":
@@ -28,7 +31,7 @@ var getSearchPage = function getSearchPage(req, res) {
 };
 
 var searchBlog = function searchBlog(req, res) {
-  var searchTerm, date, searchConditions, blogs, isNewest, recentPosts;
+  var searchTerm, date, searchConditions, blogs, user, isNewest, recentPosts;
   return regeneratorRuntime.async(function searchBlog$(_context2) {
     while (1) {
       switch (_context2.prev = _context2.next) {
@@ -85,19 +88,22 @@ var searchBlog = function searchBlog(req, res) {
           blogs = _context2.sent;
 
           if (!(blogs.length === 0)) {
-            _context2.next = 13;
+            _context2.next = 14;
             break;
           }
 
-          return _context2.abrupt("return", res.render('pages-404.ejs'));
+          user = req.session.user || null;
+          return _context2.abrupt("return", res.render('pages-404.ejs', {
+            user: user
+          }));
 
-        case 13:
+        case 14:
           // Xác định giá trị isNewest
           isNewest = true;
-          _context2.next = 16;
+          _context2.next = 17;
           return regeneratorRuntime.awrap(_CRUDService["default"].getAllBlogs(true, 4));
 
-        case 16:
+        case 17:
           recentPosts = _context2.sent;
           return _context2.abrupt("return", res.render('blog-list.ejs', {
             blogs: blogs,
@@ -105,18 +111,18 @@ var searchBlog = function searchBlog(req, res) {
             recentPosts: recentPosts
           }));
 
-        case 20:
-          _context2.prev = 20;
+        case 21:
+          _context2.prev = 21;
           _context2.t0 = _context2["catch"](4);
           console.error(_context2.t0);
           return _context2.abrupt("return", res.status(500).send("Có lỗi xảy ra trong quá trình tìm kiếm"));
 
-        case 24:
+        case 25:
         case "end":
           return _context2.stop();
       }
     }
-  }, null, null, [[4, 20]]);
+  }, null, null, [[4, 21]]);
 };
 
 module.exports = {

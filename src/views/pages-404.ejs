@@ -45,10 +45,19 @@
 						<li><a href="/index">Home</a></li>
 						<li><a href="/search">Search</a></li>
 						<li><a href="/blog-list">Blog</a></li>
-						<li><span>Manage Account</span>
-							<ul>
-								<li><a href="/login">Log Out</a></li>
-							</ul>
+						<li>
+							<!-- Hiển thị tên người dùng nếu đã đăng nhập -->
+							<% if (user) { %> 
+								<span>Hello <strong><%= user.username %></strong> <span class="triangle-down"></span></span>
+								<ul>
+									<li><a href="/login">Log Out</a></li>
+								</ul>
+							<% } else { %> 
+								<span>Manage Account</span>  <!-- Giữ nguyên nếu chưa đăng nhập -->
+								<ul>
+									<li><a href="/login">Log In</a></li>
+								</ul>
+							<% } %>
 						</li>
 					</ul>				</div>
 				</div>
