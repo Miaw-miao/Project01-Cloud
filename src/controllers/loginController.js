@@ -24,7 +24,7 @@ let postLoginPage = async (req, res) => {
         req.session.user = user;
 
         // Đăng nhập thành công, chuyển hướng đến trang chủ hoặc dashboard
-        return res.redirect('/');
+        return res.redirect('/index');
     } catch (err) {
         console.error(err);
         return res.render('pages-login.ejs', { message: 'An error occurred, please try again.' });

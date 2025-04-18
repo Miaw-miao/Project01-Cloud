@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "admin",
-    "password": "thien2708",
+    "username": "root",
+    "password": "1234",
     "database": "my_database",
-    "host": "database-1.cxcmgiokq1yq.ap-southeast-2.rds.amazonaws.com",
+    "host": "127.0.0.1",
     "dialect": "mysql",
     "port": 3306
   },
