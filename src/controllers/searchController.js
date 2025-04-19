@@ -27,19 +27,23 @@ let searchBlog = async (req, res) => {
 
         // Nếu có date
         if (date) {
-            // Nếu đã có điều kiện, thêm AND
+            const startOfDay = new Date(date);
+            startOfDay.setHours(0, 0, 0, 0); // Đặt thời gian đầu ngày
+            const endOfDay = new Date(date);
+            endOfDay.setHours(23, 59, 59, 999); // Đặt thời gian cuối ngày
+        
             if (Object.keys(searchConditions).length > 0) {
                 searchConditions = {
                     [Op.and]: [
                         searchConditions,
-                        { created_date: { [Op.eq]: new Date(date) } }
+                        { created_date: { [Op.between]: [startOfDay, endOfDay] } }
                     ]
                 };
             } else {
-                // Chỉ lọc theo ngày
-                searchConditions.created_date = { [Op.eq]: new Date(date) };
+                searchConditions.created_date = { [Op.between]: [startOfDay, endOfDay] };
             }
         }
+        
 
         let blogs = await db.Blog.findAll({
             where: searchConditions,

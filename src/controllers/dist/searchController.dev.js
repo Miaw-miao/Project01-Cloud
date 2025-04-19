@@ -31,7 +31,7 @@ var getSearchPage = function getSearchPage(req, res) {
 };
 
 var searchBlog = function searchBlog(req, res) {
-  var searchTerm, date, searchConditions, blogs, user, isNewest, recentPosts;
+  var searchTerm, date, searchConditions, startOfDay, endOfDay, blogs, user, isNewest, recentPosts;
   return regeneratorRuntime.async(function searchBlog$(_context2) {
     while (1) {
       switch (_context2.prev = _context2.next) {
@@ -63,14 +63,18 @@ var searchBlog = function searchBlog(req, res) {
 
 
           if (date) {
-            // Nếu đã có điều kiện, thêm AND
+            startOfDay = new Date(date);
+            startOfDay.setHours(0, 0, 0, 0); // Đặt thời gian đầu ngày
+
+            endOfDay = new Date(date);
+            endOfDay.setHours(23, 59, 59, 999); // Đặt thời gian cuối ngày
+
             if (Object.keys(searchConditions).length > 0) {
               searchConditions = _defineProperty({}, Op.and, [searchConditions, {
-                created_date: _defineProperty({}, Op.eq, new Date(date))
+                created_date: _defineProperty({}, Op.between, [startOfDay, endOfDay])
               }]);
             } else {
-              // Chỉ lọc theo ngày
-              searchConditions.created_date = _defineProperty({}, Op.eq, new Date(date));
+              searchConditions.created_date = _defineProperty({}, Op.between, [startOfDay, endOfDay]);
             }
           }
 
